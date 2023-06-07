@@ -11,6 +11,10 @@ public class FlashlightControl : MonoBehaviour
     {
         flashLight = GameObject.Find("/Player/Flashlight");
         cheatLight = GameObject.Find("/Player/CheatLight");
+        // flashlight is on by default
+        flashLight.SetActive(true);
+        // cheat light is off by default
+        cheatLight.SetActive(false);
     }
 
     // Update is called once per frame
