@@ -44,4 +44,17 @@ public class PlayerControl : MonoBehaviour
 
         // Debug.Log(rb.velocity);
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            // Handle collision with the "Target" object
+
+            // Handle collision logic here
+            Debug.Log("Collision occured");
+            // Destroy the collided object
+            Destroy(collision.gameObject);
+        }
+        
+    }
 }
