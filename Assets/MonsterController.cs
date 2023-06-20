@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class MonsterController : MonoBehaviour
     private int rnd;
 
     private Rigidbody rb;
+    public GameObject popUpPanel;
+    public Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +46,20 @@ public class MonsterController : MonoBehaviour
             Debug.Log("Monster collision occured");
 
         }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Handle collision with the "Target" object
+
+            // Handle collision logic here
+            Debug.Log("Collision occured with player");
+            // Destroy the Player
+            Destroy(collision.gameObject);
+            Application.Quit();
+            // ShowQuitPopUp();
+        }
     }
+
 
     void SwitchDirection(int oldDir)
     {
