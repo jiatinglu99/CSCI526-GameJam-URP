@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float speed = 100.0f;
+    public float speed = 80.0f;
     public float turnSpeed = 20.0f;
     public float axisLockY = 27.5f;
     private Rigidbody rb;
-    private Vector3 lastMovement;
 
     private FlashlightControl flashlightControl;
 
@@ -19,7 +18,6 @@ public class PlayerControl : MonoBehaviour
         flashlightControl = GetComponent<FlashlightControl>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -30,31 +28,34 @@ public class PlayerControl : MonoBehaviour
         {
             movement = new Vector3(moveHorizontal, 0, 0);
         }
-        else
+        else if (moveVertical != 0)
         {
             movement = new Vector3(0, 0, moveVertical);
+        }
+        else
+        {
+            movement = Vector3.zero;
         }
         movement = movement.normalized * speed * Time.fixedDeltaTime;
 
         // rotate the player to face the moving direction
         if (movement != Vector3.zero)
         {
-            // transform.rotation = Quaternion.LookRotation(movement);
-            // transform.Translate(-movement, Space.World);
             Quaternion toRotation = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
-            // transform.Translate(-movement, Space.World);
-            rb.MovePosition(transform.position - movement);
-            lastMovement = movement;
+            // rb.MovePosition() does not work well with wall collision
+            // rb.MovePosition(transform.position - movement);
+            // modify velocity directly works very well with wall collision
         }
+        rb.velocity = -movement*speed;
 
         // prevent effect from collision
-        rb.velocity = Vector3.zero;
+        // rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         // lock y axis
         rb.MovePosition(new Vector3(rb.position.x, axisLockY, rb.position.z));
 
-        // Debug.Log(rb.velocity);
+        Debug.Log(rb.velocity);
     }
 
     void OnCollisionEnter(Collision collision)

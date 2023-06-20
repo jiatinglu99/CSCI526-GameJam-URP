@@ -54,7 +54,7 @@ public class MonsterController : MonoBehaviour
         {
             direction = (oldDir + 1) % 4;
         }
-        Debug.Log("Direction: " + direction);
+        // Debug.Log("Direction: " + direction);
         switch (direction)
         {
             case 0: rb.velocity = new Vector3(velo, 0, 0); break;

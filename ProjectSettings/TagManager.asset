@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Map
+  - Wall Collision
   layers:
   - Default
   - TransparentFX
