@@ -47,13 +47,15 @@ public class MonsterController : MonoBehaviour
 
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Wall Collision"))
         {
             // Handle collision with the "Target" object
 
             // Handle collision logic here
             Debug.Log("Collision occured with player");
             // Destroy the Player
+
+            //Comment for testing
             Destroy(collision.gameObject);
             Application.Quit();
             // ShowQuitPopUp();
