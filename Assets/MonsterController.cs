@@ -56,8 +56,10 @@ public class MonsterController : MonoBehaviour
             // Destroy the Player
 
             //Comment for testing
-            Destroy(collision.gameObject);
-            Application.Quit();
+
+            // Destroy(collision.gameObject);
+            // Application.Quit();
+            
             // ShowQuitPopUp();
         }
     }
