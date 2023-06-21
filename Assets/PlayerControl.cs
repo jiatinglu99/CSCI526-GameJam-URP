@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody rb;
 
     private FlashlightControl flashlightControl;
+    public GameObject victoryScreen; // Reference to the victory screen UI object
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,8 +62,24 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            // Display the victory screen
+            victoryScreen.SetActive(true);
+
+            // Disable the player movement
+            // Assuming you have a script controlling the player's movement,
+            // you can disable it by finding and disabling the script component
+            PlayerControl playerMovement = GetComponent<PlayerControl>();
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = false;
+            }
+        }
+
         if (collision.gameObject.CompareTag("Coin"))
         {
+
             // Handle collision with the "Target" object
 
             // Handle collision logic here
