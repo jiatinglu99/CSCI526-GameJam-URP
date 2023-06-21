@@ -5427,6 +5427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caa6e8af11528c48a5b69786fd1c6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popUpPanel: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!54 &957115826
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7744,6 +7746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caa6e8af11528c48a5b69786fd1c6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popUpPanel: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!54 &1385603736
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13045,6 +13049,11 @@ PrefabInstance:
     - target: {fileID: 4444348894552828244, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444348894552828244, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
+        type: 3}
+      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4444348894552828247, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
