@@ -72,3 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 .vscode/
+
+# need to ignore Firebase Bundle since its too big
+/[Aa]ssets/Firebase/Plugins/x86_64/FirebaseCppApp-11_1_0.bundle
