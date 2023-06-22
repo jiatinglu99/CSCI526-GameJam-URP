@@ -10,6 +10,7 @@ public class PopupController : MonoBehaviour
     public Canvas popupCanvas;
     public GameObject popupPanel;
     public Text popupText;
+    public Text popupDesc;
 
     // public void Start()
     // {
