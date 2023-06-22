@@ -46,7 +46,15 @@ public class FlashlightControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        // flashlight drains battery over time
+        // flashlight drains battery over time if active
+        if (flashLight.activeSelf)
+        {
+            DrainFlashlightBattery();
+        }
+    }
+
+    void DrainFlashlightBattery()
+    {
         if (flashLight.GetComponent<Light>().intensity > flashLightOffThreshold)
         {
             flashLight.GetComponent<Light>().intensity -= flashLightDrainSpeed * flashLightIntensityFull;

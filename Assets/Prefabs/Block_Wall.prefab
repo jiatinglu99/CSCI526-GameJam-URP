@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8764442527236555661}
   - component: {fileID: 1285388893385016187}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Block_Wall
   m_TagString: Wall Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
