@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     public float speed = 80.0f;
     public float turnSpeed = 20.0f;
     public float axisLockY = 27.5f;
+    public Vector3 lastFlashlightLocation;
     private Rigidbody rb;
 
     private FlashlightControl flashlightControl;
@@ -24,6 +25,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         flashlightControl = GetComponent<FlashlightControl>();
         popupCanvas.enabled = false;
+        lastFlashlightLocation = transform.position;
     }
 
     void FixedUpdate()
