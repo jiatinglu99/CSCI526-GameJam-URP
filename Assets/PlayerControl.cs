@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class PlayerControl : MonoBehaviour
     
     [SerializeField]
     public PopupController popupController;
-
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +72,7 @@ public class PlayerControl : MonoBehaviour
         {
             // Display the victory screen
             // victoryScreen.SetActive(true);
-            popupController.ShowPopup("You Win!");
+            popupController.ShowPopup("You Win! Press Space key to proceed to the next level...");
             popupCanvas.enabled = true;
 
             // Disable the player movement
@@ -83,6 +83,9 @@ public class PlayerControl : MonoBehaviour
             {
                 playerMovement.enabled = false;
             }
+
+            // SceneManager.LoadScene("Level-2");
+            StartCoroutine(WaitForSpaceKeyPress());
         }
 
         if (collision.gameObject.CompareTag("Monster"))
@@ -113,5 +116,16 @@ public class PlayerControl : MonoBehaviour
             // Refill flashlight battery
             flashlightControl.RefillFlashlightBattery();
         }
+    }
+    IEnumerator WaitForSpaceKeyPress()
+    {
+        // Wait until space key is pressed
+        while (!Input.GetKeyDown(KeyCode.Space))
+        {
+            yield return null;
+        }
+
+        // Load Scene-2
+        SceneManager.LoadScene("Level-2");
     }
 }
