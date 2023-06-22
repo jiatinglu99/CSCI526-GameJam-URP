@@ -47,8 +47,8 @@ public class PlayerControl : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
             // rb.MovePosition() does not work well with wall collision
             // rb.MovePosition(transform.position - movement);
-            // modify velocity directly works very well with wall collision
         }
+        // modify velocity directly works very well with wall collision
         rb.velocity = -movement*speed;
 
         // prevent effect from collision
@@ -56,8 +56,6 @@ public class PlayerControl : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         // lock y axis
         rb.MovePosition(new Vector3(rb.position.x, axisLockY, rb.position.z));
-
-        Debug.Log(rb.velocity);
     }
 
     void OnCollisionEnter(Collision collision)
