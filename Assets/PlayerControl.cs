@@ -12,12 +12,18 @@ public class PlayerControl : MonoBehaviour
     private FlashlightControl flashlightControl;
     public GameObject victoryScreen; // Reference to the victory screen UI object
 
+    public Canvas popupCanvas;
+    
+    [SerializeField]
+    public PopupController popupController;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         flashlightControl = GetComponent<FlashlightControl>();
+        popupCanvas.enabled = false;
     }
 
     void FixedUpdate()
@@ -65,8 +71,26 @@ public class PlayerControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Finish"))
         {
             // Display the victory screen
-            victoryScreen.SetActive(true);
+            // victoryScreen.SetActive(true);
+            popupController.ShowPopup("You Win!");
+            popupCanvas.enabled = true;
 
+            // Disable the player movement
+            // Assuming you have a script controlling the player's movement,
+            // you can disable it by finding and disabling the script component
+            PlayerControl playerMovement = GetComponent<PlayerControl>();
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = false;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            // Display the victory screen
+            // victoryScreen.SetActive(true);
+            popupController.ShowPopup("You Lose!");
+            popupCanvas.enabled = true;
             // Disable the player movement
             // Assuming you have a script controlling the player's movement,
             // you can disable it by finding and disabling the script component

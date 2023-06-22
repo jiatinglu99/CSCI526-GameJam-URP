@@ -12,8 +12,10 @@ public class MonsterController : MonoBehaviour
     private int rnd;
 
     private Rigidbody rb;
-    public GameObject popUpPanel;
-    public Canvas canvas;
+    // public Canvas popupCanvas;
+
+    // [SerializeField]
+    // public PopupController popupController;
 
     // Start is called before the first frame update
     void Start()
@@ -45,22 +47,6 @@ public class MonsterController : MonoBehaviour
             // Handle collision logic here
             Debug.Log("Monster collision occured");
 
-        }
-
-        if (collision.gameObject.CompareTag("Wall Collision"))
-        {
-            // Handle collision with the "Target" object
-
-            // Handle collision logic here
-            Debug.Log("Collision occured with player");
-            // Destroy the Player
-
-            //Comment for testing
-
-            // Destroy(collision.gameObject);
-            // Application.Quit();
-            
-            // ShowQuitPopUp();
         }
     }
 
