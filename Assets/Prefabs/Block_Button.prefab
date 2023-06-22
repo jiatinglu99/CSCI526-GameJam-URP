@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 576920519}
   - component: {fileID: 576920518}
   - component: {fileID: 576920517}
+  - component: {fileID: 470665131571343924}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -98,6 +99,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &470665131571343924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576920515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df5af0e5dc41f844b8f69d0bf314961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
 --- !u!1001 &3921177054324969052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
       propertyPath: m_Name
-      value: Floor_Button
+      value: Block_Button
       objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
