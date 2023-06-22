@@ -17,13 +17,16 @@ public class FlashlightControl : MonoBehaviour
         flashLight = GameObject.Find("/Player/Flashlight");
         pointLight = GameObject.Find("/Player/Flashlight/PointLight");
         cheatLight = GameObject.Find("/Player/CheatLight");
+
+        flashLightIntensityFull = flashLight.GetComponent<Light>().intensity;
+        pointLightIntensityFull = pointLight.GetComponent<Light>().intensity;
+        Debug.Log(flashLightIntensityFull);
+        Debug.Log(pointLightIntensityFull);
+
         // flashlight is on by default
         flashLight.SetActive(true);
         // cheat light is off by default
         cheatLight.SetActive(false);
-
-        flashLightIntensityFull = flashLight.GetComponent<Light>().intensity;
-        pointLightIntensityFull = pointLight.GetComponent<Light>().intensity;
     }
 
     // Update is called once per frame
@@ -43,7 +46,15 @@ public class FlashlightControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        // flashlight drains battery over time
+        // flashlight drains battery over time if active
+        if (flashLight.activeSelf)
+        {
+            DrainFlashlightBattery();
+        }
+    }
+
+    void DrainFlashlightBattery()
+    {
         if (flashLight.GetComponent<Light>().intensity > flashLightOffThreshold)
         {
             flashLight.GetComponent<Light>().intensity -= flashLightDrainSpeed * flashLightIntensityFull;
