@@ -35,7 +35,8 @@ public class FlashlightControl : MonoBehaviour
         // if space is pressed, toggle the flashlight
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            flashLight.SetActive(!flashLight.activeSelf);
+            // temporarily disabled for playtesting
+            // flashLight.SetActive(!flashLight.activeSelf);
         }
         // if c is pressed, toggle the cheat light
         if (Input.GetKeyUp(KeyCode.C))
