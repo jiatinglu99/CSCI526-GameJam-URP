@@ -72,7 +72,7 @@ public class PlayerControl : MonoBehaviour
         {
             // Display the victory screen
             // victoryScreen.SetActive(true);
-            popupController.ShowPopup("You Win! Press Space key to proceed to the next level...");
+            popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
             popupCanvas.enabled = true;
 
             // Disable the player movement
@@ -120,7 +120,7 @@ public class PlayerControl : MonoBehaviour
     IEnumerator WaitForSpaceKeyPress()
     {
         // Wait until space key is pressed
-        while (!Input.GetKeyDown(KeyCode.Space))
+        while (!Input.GetKeyDown(KeyCode.Return))
         {
             yield return null;
         }
