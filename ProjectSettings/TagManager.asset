@@ -8,6 +8,7 @@ TagManager:
   - Map
   - Coin
   - Monster
+  - Player Light
   layers:
   - Default
   - TransparentFX

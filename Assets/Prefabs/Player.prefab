@@ -83,7 +83,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 594842702e468b648817df697932afd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -134,6 +134,10 @@ MonoBehaviour:
   speed: 80
   turnSpeed: 12
   axisLockY: 27.5
+  lastFlashlightLocation: {x: 0, y: 0, z: 0}
+  victoryScreen: {fileID: 0}
+  popupCanvas: {fileID: 0}
+  popupController: {fileID: 0}
 --- !u!114 &4444348894552828249
 MonoBehaviour:
   m_ObjectHideFlags: 0
