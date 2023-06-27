@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonTrigger : MonoBehaviour
 {
-    private int collidingObjects = 0;
+     protected int collidingObjects = 0;
     public GameObject targetObject;
     // Start is called before the first frame update
     void Start()
@@ -19,21 +19,29 @@ public class ButtonTrigger : MonoBehaviour
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        collidingObjects++;
-        if (collidingObjects == 1)
+        // check if the object is the player
+        if (other.gameObject.name == "Player")
         {
-            targetObject.SetActive(!targetObject.activeSelf);
+            collidingObjects++;
+            if (collidingObjects == 1)
+            {
+                targetObject.SetActive(!targetObject.activeSelf);
+            }
         }
     }
 
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     collidingObjects--;
-    //     if (collidingObjects == 0)
-    //     {
-    //         targetObject.SetActive(true);
-    //     }
-    // }
+    public virtual void OnTriggerExit(Collider other)
+    {
+        // check if the object is the player
+        if (other.gameObject.name == "Player")
+        {
+            collidingObjects--;
+            if (collidingObjects == 0)
+            {
+                // targetObject.SetActive(true);
+            }
+        }
+    }
 }
