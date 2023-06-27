@@ -21,10 +21,12 @@ public class PlayerControl : MonoBehaviour
     
     [SerializeField]
     public PopupController popupController;
+    public CameraController cameraController;
 
     // Start is called before the first frame update
     void Start()
     {
+        // cameraController.ZoomOutCamera();
         rb = GetComponent<Rigidbody>();
         flashlightControl = GetComponent<FlashlightControl>();
         popupCanvas.enabled = false;
@@ -131,6 +133,7 @@ public class PlayerControl : MonoBehaviour
             flashlightControl.RefillFlashlightBattery();
         }
     }
+
     IEnumerator LoadLevel()
     {
         // Wait until return key is pressed
