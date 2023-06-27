@@ -1608,6 +1608,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1728,6 +1729,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 438514897}
   cameraHeight: 350
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d9b7f21511e4f1c80b781c4ef24a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &343613481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10552,6 +10565,11 @@ PrefabInstance:
       propertyPath: popupController
       value: 
       objectReference: {fileID: 1502797748}
+    - target: {fileID: 4444348894552828247, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
+        type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 330585549}
     - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: flashLightDrainSpeed
