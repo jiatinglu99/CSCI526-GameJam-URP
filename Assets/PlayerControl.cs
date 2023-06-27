@@ -13,6 +13,9 @@ public class PlayerControl : MonoBehaviour
 
     private FlashlightControl flashlightControl;
     public GameObject victoryScreen; // Reference to the victory screen UI object
+    private bool completedLevel = false; // used for analytics to ignore multiple collisions with end goal
+    private string curLevel = "Level-1";
+    
 
     public Canvas popupCanvas;
     
@@ -75,6 +78,14 @@ public class PlayerControl : MonoBehaviour
             popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
             popupCanvas.enabled = true;
 
+            if (!completedLevel)
+            {
+                // update the analytics metric "highest completed level"
+                Analytics.playerData.highestCompletedLevel += 1;
+                Analytics.updateDatabase();
+                completedLevel = true;
+            }
+
             // Disable the player movement
             // Assuming you have a script controlling the player's movement,
             // you can disable it by finding and disabling the script component
@@ -85,14 +96,15 @@ public class PlayerControl : MonoBehaviour
             }
 
             // SceneManager.LoadScene("Level-2");
-            StartCoroutine(WaitForSpaceKeyPress());
+            curLevel = "Level-2";
+            StartCoroutine(LoadLevel());
         }
 
         if (collision.gameObject.CompareTag("Monster"))
         {
             // Display the victory screen
             // victoryScreen.SetActive(true);
-            popupController.ShowPopup("You Lose!");
+            popupController.ShowPopup("You Lose! Press Enter to retry the level.");
             popupCanvas.enabled = true;
             // Disable the player movement
             // Assuming you have a script controlling the player's movement,
@@ -102,6 +114,8 @@ public class PlayerControl : MonoBehaviour
             {
                 playerMovement.enabled = false;
             }
+
+            StartCoroutine(LoadLevel());
         }
 
         if (collision.gameObject.CompareTag("Coin"))
@@ -117,15 +131,17 @@ public class PlayerControl : MonoBehaviour
             flashlightControl.RefillFlashlightBattery();
         }
     }
-    IEnumerator WaitForSpaceKeyPress()
+    IEnumerator LoadLevel()
     {
-        // Wait until space key is pressed
+        // Wait until return key is pressed
         while (!Input.GetKeyDown(KeyCode.Return))
         {
             yield return null;
         }
 
-        // Load Scene-2
-        SceneManager.LoadScene("Level-2");
+        completedLevel = false; // sets for upcoming/reloaded level
+
+        SceneManager.LoadScene(curLevel);
     }
+
 }
