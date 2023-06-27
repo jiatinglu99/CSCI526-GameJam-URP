@@ -99,12 +99,12 @@ public class MonsterController : MonoBehaviour
         direction = -direction;
 
         Debug.Log("Monster collision occurred, reversing direction");
-        if (collision.gameObject.CompareTag("Map"))
-        {
-            direction = -direction;
+        // if (collision.gameObject.CompareTag("Map"))
+        // {
+        //     direction = -direction;
 
-            Debug.Log("Monster collision occurred, reversing direction");
-            // Reverse direction when colliding with a wall.
-        }
+        //     Debug.Log("Monster collision occurred, reversing direction");
+        //     // Reverse direction when colliding with a wall.
+        // }
     }
 }
