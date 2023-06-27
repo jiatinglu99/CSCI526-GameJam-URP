@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     private FlashlightControl flashlightControl;
     public GameObject victoryScreen; // Reference to the victory screen UI object
     private bool completedLevel = false; // used for analytics to ignore multiple collisions with end goal
-    private string curLevel = "Level-1";
+    private string curLevel;
     
 
     public Canvas popupCanvas;
@@ -39,6 +39,7 @@ public class PlayerControl : MonoBehaviour
         // popupCanvas.enabled = false;
         lastFlashlightLocation = transform.position;
         cameraController.ZoomOutCamera();
+        curLevel = SceneManager.GetActiveScene().name;
     }
 
     IEnumerator DisablePopupAfterDelay()
@@ -96,6 +97,7 @@ public class PlayerControl : MonoBehaviour
             popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
             popupCanvas.enabled = true;
 
+            // ensures that multiple collisions don't trigger the counter to increment more than once
             if (!completedLevel)
             {
                 // update the analytics metric "highest completed level"
