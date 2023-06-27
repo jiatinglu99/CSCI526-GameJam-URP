@@ -92,6 +92,7 @@ public class PlayerControl : MonoBehaviour
         {
             // Display the victory screen
             // victoryScreen.SetActive(true);
+            Destroy(collision.gameObject);
             popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
             popupCanvas.enabled = true;
 
@@ -111,9 +112,14 @@ public class PlayerControl : MonoBehaviour
             {
                 playerMovement.enabled = false;
             }
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            if(string.Equals("Level-1",currentSceneName))
+                curLevel = "Level-2";
+            else if(string.Equals("Level-2",currentSceneName))
+                curLevel = "Level-3";
+            else
+                curLevel = "Level-1";
 
-            // SceneManager.LoadScene("Level-2");
-            curLevel = "Level-2";
             StartCoroutine(LoadLevel());
         }
 
