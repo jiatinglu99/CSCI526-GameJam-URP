@@ -75,3 +75,4 @@ crashlytics-build.properties
 
 # need to ignore Firebase Bundle since its too big
 /[Aa]ssets/Firebase/Plugins/x86_64/FirebaseCppApp-11_1_0.bundle
+/[Aa]ssets/Firebase/Plugins/x86_64/FirebaseCppApp-11_1_0.bundle.meta
