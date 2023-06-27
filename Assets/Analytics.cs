@@ -23,7 +23,7 @@ public class Analytics : MonoBehaviour
         System.Random random = new System.Random();
         Debug.Log("OVER HERE");
         
-        playerData.userID = random.Next(1, 101); // generates between 1 and 100
+        playerData.userID = random.Next(100000, 1000000); // generates a six digit value between 100,000 and 999,999
         playerData.highestCompletedLevel = 0;
         playerData.timeSpent[0] = 0.0f;
         playerData.timesRetried[0] = 0;

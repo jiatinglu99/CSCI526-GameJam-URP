@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
     {
 
         mainCamera = Camera.main;
-        float zoomSpeed = 1f;
+        //float zoomSpeed = 1f;
         float maxZoomOut = 120f;
         float minZoomIn = 10f;
         float targetZoom = maxZoomOut;
