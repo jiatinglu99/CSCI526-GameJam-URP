@@ -16,11 +16,13 @@ public class PlayerData
 
 public class Analytics : MonoBehaviour
 {
+    public static PlayerData playerData = new PlayerData();
+
     private IEnumerator Start()
     {
         System.Random random = new System.Random();
         Debug.Log("OVER HERE");
-        PlayerData playerData = new PlayerData();
+        
         playerData.userID = random.Next(1, 101); // generates between 1 and 100
         playerData.highestCompletedLevel = 0;
         playerData.timeSpent[0] = 0.0f;
@@ -75,5 +77,13 @@ public class Analytics : MonoBehaviour
         //{
         //    Debug.LogError("Error sending POST request: " + request.error);
         //}
+    }
+
+    public static void updateDatabase()
+    {
+        Debug.Log("Updating database");
+        string json = JsonUtility.ToJson(playerData);
+        RestClient.Post("https://jomandterry-3569d-default-rtdb.firebaseio.com/.json", playerData);
+
     }
 }

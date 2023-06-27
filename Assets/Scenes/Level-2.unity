@@ -1608,6 +1608,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1728,6 +1729,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 438514897}
   cameraHeight: 350
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d9b7f21511e4f1c80b781c4ef24a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &343613481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2894,6 +2907,7 @@ GameObject:
   - component: {fileID: 771764667}
   - component: {fileID: 771764666}
   - component: {fileID: 771764665}
+  - component: {fileID: 771764668}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2923,12 +2937,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
+    m_FontSize: 3
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2960,9 +2974,23 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 0.00000055777}
-  m_SizeDelta: {x: 40.5671, y: 10.13699}
+  m_AnchoredPosition: {x: 1, y: 3.02}
+  m_SizeDelta: {x: 40.5671, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &771764668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771764664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1001 &775676955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6307,6 +6335,7 @@ MonoBehaviour:
   popupCanvas: {fileID: 1502797746}
   popupPanel: {fileID: 1860400513}
   popupText: {fileID: 771764665}
+  popupDesc: {fileID: 0}
 --- !u!1 &1507855749
 GameObject:
   m_ObjectHideFlags: 0
@@ -10536,6 +10565,11 @@ PrefabInstance:
       propertyPath: popupController
       value: 
       objectReference: {fileID: 1502797748}
+    - target: {fileID: 4444348894552828247, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
+        type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 330585549}
     - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: flashLightDrainSpeed
