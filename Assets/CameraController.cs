@@ -6,48 +6,50 @@ public class CameraController : MonoBehaviour
 {
 
     private Camera mainCamera;
-    private Vector3 originalPosition;
-    private Quaternion originalRotation;
-    private float originalFieldOfView;
-
-    private void Awake()
-    {
-        mainCamera = Camera.main;
-        originalPosition = mainCamera.transform.position;
-        originalRotation = mainCamera.transform.rotation;
-        originalFieldOfView = mainCamera.fieldOfView;
-    }
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main;
         Debug.Log("CameraController.Start()");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // ZoomOutCamera();
     }
 
     public void ZoomOutCamera()
     {
         Debug.Log("CameraController.ZoomOutCamera()");
-        // Set the desired zoom out position, rotation, and field of view
-        // Vector3 zoomOutPosition = new Vector3(0f, 10f, -10f);
-        // Quaternion zoomOutRotation = Quaternion.Euler(30f, 0f, 0f);
-        // float zoomOutFieldOfView = 60f;
-
-        // mainCamera.transform.position = zoomOutPosition;
-        // mainCamera.transform.rotation = zoomOutRotation;
-        // mainCamera.fieldOfView = zoomOutFieldOfView;
+        StartCoroutine(AnimateZoomOut());
     }
-
-    public void RestoreCameraSettings()
+    private IEnumerator AnimateZoomOut()
     {
-        mainCamera.transform.position = originalPosition;
-        mainCamera.transform.rotation = originalRotation;
-        mainCamera.fieldOfView = originalFieldOfView;
+
+        mainCamera = Camera.main;
+        float zoomSpeed = 1f;
+        float maxZoomOut = 120f;
+        float minZoomIn = 10f;
+        float targetZoom = maxZoomOut;
+        float initialZoom = mainCamera.fieldOfView;
+        float t = 0f;
+        float duration = 3f; // Duration of the zoom animation (in seconds)
+        
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            float newFOV = Mathf.Lerp(initialZoom, targetZoom, t);
+            mainCamera.fieldOfView = Mathf.Clamp(newFOV, minZoomIn, maxZoomOut);
+            yield return null;
+        }
+
+        t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            float newFOV = Mathf.Lerp(targetZoom, initialZoom, t);
+            mainCamera.fieldOfView = Mathf.Clamp(newFOV, minZoomIn, maxZoomOut);
+            yield return null;
+        }
+        
+        Debug.Log("CameraController.ZoomOutCamera()");
     }
 
 }

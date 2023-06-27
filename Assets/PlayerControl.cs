@@ -26,15 +26,30 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // cameraController.ZoomOutCamera();
         rb = GetComponent<Rigidbody>();
         flashlightControl = GetComponent<FlashlightControl>();
-        popupCanvas.enabled = false;
+        
+        Debug.Log("PlayerControl.Awake()");
+        popupCanvas.enabled = true;
+        popupController.ShowPopup("You need to reach to the Green GOAL!");
+
+        //wait for 3 seconds
+        StartCoroutine(DisablePopupAfterDelay());
+
+        // popupCanvas.enabled = false;
         lastFlashlightLocation = transform.position;
+        cameraController.ZoomOutCamera();
+    }
+
+    IEnumerator DisablePopupAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        popupCanvas.enabled = false;
     }
 
     void FixedUpdate()
     {
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical   = Input.GetAxis("Vertical");
 
