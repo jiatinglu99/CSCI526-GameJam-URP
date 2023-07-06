@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/StyleSheet.uss?fileID=7433441132597879392&amp;guid=eb74867467793824fa2d5cedda1015c8&amp;type=3#StyleSheet" />
     <ui:VisualElement style="flex-grow: 1; justify-content: flex-end; align-items: flex-end;">
-        <ui:VisualElement style="flex-basis: 100%; flex-grow: 0; flex-shrink: 1; width: 50%; align-items: center; justify-content: flex-start; padding-left: 10%; padding-right: 10%; padding-top: 10%; padding-bottom: 10%;">
-            <ui:Button text="START" display-tooltip-when-elided="true" class="button" style="height: 75px; width: 160px;" />
-            <ui:Button text="LEVELS" display-tooltip-when-elided="true" class="button" style="height: 75px; width: 160px;" />
-            <ui:Button text="ABOUT" display-tooltip-when-elided="true" class="button" style="height: 75px; width: 160px;" />
+        <ui:VisualElement name="Container" style="flex-basis: 100%; flex-grow: 0; flex-shrink: 1; width: 40%; align-items: center; justify-content: flex-start; padding-left: 10%; padding-right: 10%; padding-top: 15%; padding-bottom: 10%;">
+            <ui:Button text="START" display-tooltip-when-elided="true" name="ButtonStart" class="button" style="height: 75px; width: 160px;" />
+            <ui:Button text="LEVELS" display-tooltip-when-elided="true" name="ButtonLevels" class="button" style="height: 75px; width: 160px;" />
+            <ui:Button text="ABOUT" display-tooltip-when-elided="true" name="ButtonAbout" class="button" style="height: 75px; width: 160px;" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Label text="I&apos;M TERRIFIED!" display-tooltip-when-elided="true" class="title" style="-unity-text-align: middle-center; top: 71px; left: 57px; color: rgba(236, 236, 236, 0.63); -unity-font-style: bold;" />
+    <ui:Label text="I&apos;M TERRIFIED!" display-tooltip-when-elided="true" name="Title" class="title" style="-unity-text-align: middle-center; top: 10%; left: 50%; color: rgb(255, 255, 255); -unity-font-style: bold; bottom: 80%; right: 50%; position: absolute;" />
 </ui:UXML>
