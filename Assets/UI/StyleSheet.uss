@@ -14,7 +14,7 @@
     white-space: nowrap;
     margin-top: 45px;
     -unity-font: resource('FlatSkin/Font/Roboto-Black');
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     background-color: rgba(202, 67, 28, 0.78);
     -unity-font-style: bold;
     opacity: 0.88;
@@ -24,4 +24,17 @@
     -unity-text-outline-width: 0;
     transition-property: all;
     transition-timing-function: linear;
+}
+
+.title {
+    position: absolute;
+    top: 25%;
+    right: auto;
+    left: 32%;
+    -unity-font: resource('FlatSkin/Font/Roboto-Black');
+    -unity-font-style: bold-and-italic;
+    font-size: 75px;
+    -unity-text-align: middle-center;
+    justify-content: flex-start;
+    align-items: center;
 }

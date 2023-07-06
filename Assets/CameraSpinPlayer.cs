@@ -25,6 +25,5 @@ public class CameraSpinPlayer : MonoBehaviour
         float z = Mathf.Sin(t) * cameraDistance;
         transform.position = player.position + new Vector3(x, cameraDistance, z);
         transform.LookAt(player.position);
-        transform.RotateAround(player.position, Vector3.up, 45.0f);
     }
 }
