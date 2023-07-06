@@ -1,0 +1,27 @@
+.button {
+    width: 180px;
+    height: 100px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    margin-top: 45px;
+    -unity-font: resource('FlatSkin/Font/Roboto-Black');
+    color: rgba(255, 255, 255, 255);
+    background-color: rgba(202, 67, 28, 0.78);
+    -unity-font-style: bold;
+    opacity: 0.88;
+    visibility: visible;
+    display: flex;
+    overflow: visible;
+    -unity-text-outline-width: 0;
+    transition-property: all;
+    transition-timing-function: linear;
+}

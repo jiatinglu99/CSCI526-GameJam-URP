@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/StyleSheet.uss?fileID=7433441132597879392&amp;guid=eb74867467793824fa2d5cedda1015c8&amp;type=3#StyleSheet" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: flex-end; align-items: flex-end;">
+        <ui:VisualElement style="flex-basis: 100%; flex-grow: 0; flex-shrink: 1; width: 50%; align-items: center; justify-content: flex-start; padding-left: 10%; padding-right: 10%; padding-top: 10%; padding-bottom: 10%;">
+            <ui:Button text="START" display-tooltip-when-elided="true" class="button" style="height: 75px; width: 160px;" />
+            <ui:Button text="LEVELS" display-tooltip-when-elided="true" class="button" style="height: 75px; width: 160px;" />
+            <ui:Button text="ABOUT" display-tooltip-when-elided="true" class="button" style="height: 75px; width: 160px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
