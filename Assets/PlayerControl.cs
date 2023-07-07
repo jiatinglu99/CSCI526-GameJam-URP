@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Diagnostics;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject victoryScreen; // Reference to the victory screen UI object
     private bool completedLevel = false; // used for analytics to ignore multiple collisions with end goal
     private string curLevel;
-    
+    private Stopwatch stopWatch = new Stopwatch();
+
 
     public Canvas popupCanvas;
     
@@ -28,8 +30,8 @@ public class PlayerControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         flashlightControl = GetComponent<FlashlightControl>();
-        
-        Debug.Log("PlayerControl.Awake()");
+
+        UnityEngine.Debug.Log("PlayerControl.Awake()");
         popupCanvas.enabled = true;
         popupController.ShowPopup("You need to reach to the Green GOAL!");
 
@@ -40,6 +42,10 @@ public class PlayerControl : MonoBehaviour
         lastFlashlightLocation = transform.position;
         cameraController.ZoomOutCamera();
         curLevel = SceneManager.GetActiveScene().name;
+
+        // start stopwatch for level 1
+        stopWatch.Start();
+
     }
 
     IEnumerator DisablePopupAfterDelay()
@@ -102,8 +108,17 @@ public class PlayerControl : MonoBehaviour
             {
                 // update the analytics metric "highest completed level"
                 Analytics.playerData.highestCompletedLevel += 1;
-                Analytics.updateDatabase();
                 completedLevel = true;
+
+                // stop the stopwatch for level 1
+                if (string.Equals("Level-1", currentSceneName))
+                {
+                    stopWatch.Stop();
+                    TimeSpan time = stopWatch.Elapsed;
+                    Analytics.playerData.timeSpent[0] = time;
+                }
+
+                Analytics.updateDatabase();
             }
 
             // Disable the player movement
@@ -142,6 +157,14 @@ public class PlayerControl : MonoBehaviour
                 playerMovement.enabled = false;
             }
 
+            // update the counter for died during level 1 and subsequently update the database
+            if (string.Equals("Level-1", currentSceneName))
+            {
+                Analytics.playerData.timesRetried[0] += 1;
+                Analytics.updateDatabase();
+            }
+
+
             StartCoroutine(LoadLevel());
         }
 
@@ -151,7 +174,7 @@ public class PlayerControl : MonoBehaviour
             // Handle collision with the "Target" object
 
             // Handle collision logic here
-            Debug.Log("Collision occured");
+            UnityEngine.Debug.Log("Collision occured");
             // Destroy the collided object
             Destroy(collision.gameObject);
             // Refill flashlight battery

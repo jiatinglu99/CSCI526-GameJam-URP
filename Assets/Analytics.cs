@@ -10,8 +10,8 @@ public class PlayerData
 {
     public int userID;
     public int highestCompletedLevel;
-    public float[] timeSpent = new float[2]; // change 2 based on how many levels there are
-    public int[] timesRetried = new int[2]; // ^^^
+    public float[] timeSpent = new float[3]; // change 2 based on how many levels there are
+    public int[] timesRetried = new int[3]; // ^^^
 }
 
 public class Analytics : MonoBehaviour
