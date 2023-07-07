@@ -119,6 +119,8 @@ public class PlayerControl : MonoBehaviour
                 curLevel = "Level-2";
             else if(string.Equals("Level-2",currentSceneName))
                 curLevel = "Level-3";
+            else if(string.Equals("Level-3",currentSceneName))
+                curLevel = "Level-4";
             else
                 curLevel = "Level-1";
 
