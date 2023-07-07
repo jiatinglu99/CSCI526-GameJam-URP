@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class CubeMonsterController : MonoBehaviour
 {
-    public float rollSpeed = 3.0f;
+    public float rollSpeed = 5000000.0f;
     public bool rolling = true;
     Vector3 anchor;
     Vector3 axis;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class CubeMonsterController : MonoBehaviour
     void Update()
     {
         if (rolling) {
-            Vector3 torque = new Vector3(0, 0, rollSpeed);
+            Vector3 torque = new Vector3(0, 0, rollSpeed * Time.deltaTime);
             rb.AddTorque(torque, ForceMode.VelocityChange);
         }
     }
