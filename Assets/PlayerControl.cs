@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Diagnostics;
+using System;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     private FlashlightControl flashlightControl;
     public GameObject victoryScreen; // Reference to the victory screen UI object
     private bool completedLevel = false; // used for analytics to ignore multiple collisions with end goal
-    private string curLevel;
+    private int curLevel;
     private Stopwatch stopWatch = new Stopwatch();
 
 
@@ -41,9 +42,9 @@ public class PlayerControl : MonoBehaviour
         // popupCanvas.enabled = false;
         lastFlashlightLocation = transform.position;
         cameraController.ZoomOutCamera();
-        curLevel = SceneManager.GetActiveScene().name;
+        curLevel = SceneManager.GetActiveScene().buildIndex;
 
-        // start stopwatch for level 1
+        // (re)start stopwatch for level
         stopWatch.Start();
 
     }
@@ -95,6 +96,10 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        int curSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         if (collision.gameObject.CompareTag("Finish"))
         {
             // Display the victory screen
@@ -110,13 +115,11 @@ public class PlayerControl : MonoBehaviour
                 Analytics.playerData.highestCompletedLevel += 1;
                 completedLevel = true;
 
-                // stop the stopwatch for level 1
-                if (string.Equals("Level-1", currentSceneName))
-                {
-                    stopWatch.Stop();
-                    TimeSpan time = stopWatch.Elapsed;
-                    Analytics.playerData.timeSpent[0] = time;
-                }
+                // stop the stopwatch for level
+                stopWatch.Stop();
+                long time = stopWatch.ElapsedMilliseconds;
+                UnityEngine.Debug.Log($"Stopwatch {time}");
+                Analytics.playerData.timeSpent[curSceneIndex] = (time/1000); // converting milliseconds to seconds. Now that's analytics!
 
                 Analytics.updateDatabase();
             }
@@ -129,13 +132,16 @@ public class PlayerControl : MonoBehaviour
             {
                 playerMovement.enabled = false;
             }
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            if(string.Equals("Level-1",currentSceneName))
-                curLevel = "Level-2";
-            else if(string.Equals("Level-2",currentSceneName))
-                curLevel = "Level-3";
-            else
-                curLevel = "Level-1";
+
+            // sets up for the next level
+            curLevel += 1;
+
+            // resets the game to level 1 after the player completes all the levels
+            // **should eventually be changed to return to start screen?
+            if (curLevel >= SceneManager.sceneCountInBuildSettings)
+            {
+                curLevel = 0;
+            }
 
             StartCoroutine(LoadLevel());
         }
@@ -143,9 +149,9 @@ public class PlayerControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster"))
         {
             // Display the victory screen
-            // victoryScreen.SetActive(true);
             popupController.ShowPopup("You Lose! Press Enter to retry the level.");
             popupCanvas.enabled = true;
+
             // Disable the player movement
             // Assuming you have a script controlling the player's movement,
             // you can disable it by finding and disabling the script component
@@ -161,7 +167,6 @@ public class PlayerControl : MonoBehaviour
                 Analytics.playerData.timesRetried[0] += 1;
                 Analytics.updateDatabase();
             }
-
 
             StartCoroutine(LoadLevel());
         }
@@ -188,6 +193,7 @@ public class PlayerControl : MonoBehaviour
             yield return null;
         }
 
+        stopWatch.Restart();
         completedLevel = false; // sets for upcoming/reloaded level
 
         SceneManager.LoadScene(curLevel);

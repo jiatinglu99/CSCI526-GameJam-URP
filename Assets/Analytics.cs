@@ -9,8 +9,9 @@ using Proyecto26;
 public class PlayerData
 {
     public int userID;
+    public long timeStamp;
     public int highestCompletedLevel;
-    public float[] timeSpent = new float[3]; // change 2 based on how many levels there are
+    public float[] timeSpent = new float[3]; // change number based on how many levels there are
     public int[] timesRetried = new int[3]; // ^^^
 }
 
@@ -24,6 +25,7 @@ public class Analytics : MonoBehaviour
         Debug.Log("OVER HERE");
         
         playerData.userID = random.Next(100000, 1000000); // generates a six digit value between 100,000 and 999,999
+        playerData.timeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds(); // probably could just use this as a unique userID instead
         playerData.highestCompletedLevel = 0;
         playerData.timeSpent[0] = 0.0f;
         playerData.timesRetried[0] = 0;
