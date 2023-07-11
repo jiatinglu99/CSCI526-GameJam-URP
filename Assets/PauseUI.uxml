@@ -1,5 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="PauseContainer" style="flex-grow: 1; align-items: flex-end;">
-        <ui:Button text="Pause" display-tooltip-when-elided="true" name="Pause" style="width: 10%;" />
-    </ui:VisualElement>
-</ui:UXML>
