@@ -11,8 +11,8 @@ public class PlayerData
     public int userID;
     public long timeStamp;
     public int highestCompletedLevel;
-    public float[] timeSpent = new float[3]; // change number based on how many levels there are
-    public int[] timesRetried = new int[3]; // ^^^
+    public float[] timeSpent = new float[30]; // change number based on how many levels there are
+    public int[] timesRetried = new int[30]; // ^^^
 }
 
 public class Analytics : MonoBehaviour

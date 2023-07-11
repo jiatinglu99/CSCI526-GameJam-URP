@@ -136,6 +136,7 @@ public class PlayerControl : MonoBehaviour
 
             // sets up for the next level
             curLevel += 1;
+            UnityEngine.Debug.Log("curLevel: " + curLevel);
 
             // resets the game to level 1 after the player completes all the levels
             // **should eventually be changed to return to start screen?
