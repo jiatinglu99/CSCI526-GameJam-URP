@@ -132,6 +132,7 @@ public class PlayerControl : MonoBehaviour
             {
                 playerMovement.enabled = false;
             }
+// <<<<<<< feature/analytics
 
             // sets up for the next level
             curLevel += 1;
@@ -142,6 +143,17 @@ public class PlayerControl : MonoBehaviour
             {
                 curLevel = 0;
             }
+// =======
+//             string currentSceneName = SceneManager.GetActiveScene().name;
+//             if(string.Equals("Level-1",currentSceneName))
+//                 curLevel = "Level-2";
+//             else if(string.Equals("Level-2",currentSceneName))
+//                 curLevel = "Level-3";
+//             else if(string.Equals("Level-3",currentSceneName))
+//                 curLevel = "Level-4";
+//             else
+//                 curLevel = "Level-1";
+// >>>>>>> master
 
             StartCoroutine(LoadLevel());
         }
