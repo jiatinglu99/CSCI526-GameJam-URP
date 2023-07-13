@@ -140,6 +140,7 @@ MonoBehaviour:
   popupCanvas: {fileID: 0}
   popupController: {fileID: 0}
   cameraController: {fileID: 0}
+  UIDocument_pause: {fileID: 0}
 --- !u!114 &4444348894552828249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16c5a6547eb8994c9fbb2b5b994b0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashLightDrainSpeed: 0.0007
+  UIDocument_pause: {fileID: 0}
+  flashLightDrainSpeed: 0.00068
   flashLightOffThreshold: 800
 --- !u!114 &4444348894181825923
 MonoBehaviour:
