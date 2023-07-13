@@ -13,6 +13,7 @@ public class PlayerData
     public int highestCompletedLevel;
     public float[] timeSpent = new float[30]; // change number based on how many levels there are
     public int[] timesRetried = new int[30]; // ^^^
+    public int[,] cornersVisited = new int[8,4];
 }
 
 public class Analytics : MonoBehaviour
@@ -30,7 +31,16 @@ public class Analytics : MonoBehaviour
         playerData.timeSpent[0] = 0.0f;
         playerData.timesRetried[0] = 0;
 
-        string json = JsonUtility.ToJson(playerData);
+        for (int row = 0; row < 8; row++)
+        {
+            for (int column = 0; column < 4; column++)
+            {
+                // Assign a value based on row and column indices
+                playerData.cornersVisited[row, column] = 0;
+
+                string json = JsonUtility.ToJson(playerData);
+            }
+        }
 
         RestClient.Post("https://jomandterry-3569d-default-rtdb.firebaseio.com/.json", playerData);
         yield break;
