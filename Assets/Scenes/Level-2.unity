@@ -18457,11 +18457,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall Collision
       objectReference: {fileID: 0}
-    - target: {fileID: 4444348894552828242, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4444348894552828243, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: m_Radius
@@ -18517,16 +18512,6 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 330585549}
-    - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: flashLightDrainSpeed
-      value: 0.0006
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: flashLightOffThreshold
-      value: 800
-      objectReference: {fileID: 0}
     - target: {fileID: 4444348894589678590, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: m_IsActive
