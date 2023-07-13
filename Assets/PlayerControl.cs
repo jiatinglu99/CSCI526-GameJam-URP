@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Diagnostics;
 using System;
+using UnityEngine.UIElements;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -57,6 +58,10 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(3f);
         popupCanvas.enabled = false;
         UIDocument_pause.SetActive(true);
+        // UIDocument uidoc = UIDocument_pause.GetComponent<UIDocument>();
+        // VisualElement root = uidoc.rootVisualElement;
+        // Label myLabel = root.Q<Label>("Battery");
+        // myLabel.text = "New Text";
     }
 
     void FixedUpdate()
@@ -96,6 +101,15 @@ public class PlayerControl : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         // lock y axis
         rb.MovePosition(new Vector3(rb.position.x, axisLockY, rb.position.z));
+        
+        if(UIDocument_pause.activeSelf)
+        {
+            UIDocument uidoc = UIDocument_pause.GetComponent<UIDocument>();
+            VisualElement root = uidoc.rootVisualElement;
+            Label myLabel = root.Q<Label>("Battery");
+            myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";    
+        }
+
     }
 
     void OnCollisionEnter(Collision collision)

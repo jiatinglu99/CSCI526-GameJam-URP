@@ -44,6 +44,7 @@ public class PauseHandler : MonoBehaviour
     private void quitGame()
     {
         Debug.Log("quit game!");
-        // SceneManager.LoadScene("Start");
+        
+        SceneManager.LoadScene("Start");
     }
 }
