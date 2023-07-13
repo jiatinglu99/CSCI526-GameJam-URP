@@ -25,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     public PopupController popupController;
     public CameraController cameraController;
+    public GameObject UIDocument_pause;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,8 @@ public class PlayerControl : MonoBehaviour
 
         UnityEngine.Debug.Log("PlayerControl.Awake()");
         popupCanvas.enabled = true;
+        UIDocument_pause.SetActive(false);
+
         popupController.ShowPopup("You need to reach to the Green GOAL!");
 
         //wait for 3 seconds
@@ -53,6 +56,7 @@ public class PlayerControl : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         popupCanvas.enabled = false;
+        UIDocument_pause.SetActive(true);
     }
 
     void FixedUpdate()
@@ -107,6 +111,7 @@ public class PlayerControl : MonoBehaviour
             Destroy(collision.gameObject);
             popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
             popupCanvas.enabled = true;
+            UIDocument_pause.SetActive(false);
 
             // ensures that multiple collisions don't trigger the counter to increment more than once
             if (!completedLevel)
@@ -164,6 +169,7 @@ public class PlayerControl : MonoBehaviour
             // Display the victory screen
             popupController.ShowPopup("You Lose! Press Enter to retry the level.");
             popupCanvas.enabled = true;
+            UIDocument_pause.SetActive(false);
 
             // Disable the player movement
             // Assuming you have a script controlling the player's movement,

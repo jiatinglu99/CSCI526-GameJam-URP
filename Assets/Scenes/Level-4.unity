@@ -14861,6 +14861,11 @@ PrefabInstance:
       objectReference: {fileID: 1502797748}
     - target: {fileID: 4444348894552828247, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
+      propertyPath: UIDocument_pause
+      value: 
+      objectReference: {fileID: 2046326622}
+    - target: {fileID: 4444348894552828247, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
+        type: 3}
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 330585549}
