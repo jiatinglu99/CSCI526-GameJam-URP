@@ -7,7 +7,10 @@ public class ChildObjectSpin : MonoBehaviour
     public float spinSpeed = 2.0f;
     void FixedUpdate()
     {
-        // spin
-        transform.Rotate(0.0f, spinSpeed, 0.0f, Space.World);
+        // only spin the child object under this parent
+        foreach (Transform child in transform)
+        {
+            child.Rotate(0.0f, spinSpeed, 0.0f, Space.World);
+        }
     }
 }
