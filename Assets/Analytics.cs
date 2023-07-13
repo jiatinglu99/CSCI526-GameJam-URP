@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using System;
 using Proyecto26;
+using Newtonsoft.Json;
 
 [System.Serializable]
 public class PlayerData
@@ -13,7 +14,8 @@ public class PlayerData
     public int highestCompletedLevel;
     public float[] timeSpent = new float[30]; // change number based on how many levels there are
     public int[] timesRetried = new int[30]; // ^^^
-    public int[,] cornersVisited = new int[8,4];
+    // public int[,] cornersVisited = new int[8,4];
+    public Dictionary<String, int> cornersVisited = new Dictionary<String, int>();
 }
 
 public class Analytics : MonoBehaviour
@@ -36,7 +38,7 @@ public class Analytics : MonoBehaviour
             for (int column = 0; column < 4; column++)
             {
                 // Assign a value based on row and column indices
-                playerData.cornersVisited[row, column] = 0;
+                playerData.cornersVisited.Add(row.ToString() + "-" + column.ToString(), 0);
 
                 string json = JsonUtility.ToJson(playerData);
             }
@@ -94,8 +96,8 @@ public class Analytics : MonoBehaviour
     public static void updateDatabase()
     {
         Debug.Log("Updating database");
-        string json = JsonUtility.ToJson(playerData);
+        string json = JsonConvert.SerializeObject(playerData);
         RestClient.Post("https://jomandterry-3569d-default-rtdb.firebaseio.com/.json", playerData);
-
+        UnityEngine.Debug.Log(json);
     }
 }

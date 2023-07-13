@@ -21,9 +21,14 @@ public class CornerAnalytic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Analytics.playerData.cornersVisited[curLevel, currCorner] += 1;
+        // check the other object is the player
+        if (other.gameObject.tag != "Player")
+        {
+            return;
+        }
+        Analytics.playerData.cornersVisited[curLevel.ToString() + "-" + currCorner.ToString()] += 1;
 
+        UnityEngine.Debug.Log("Corner Hit - Trigger " + currCorner.ToString());
         Analytics.updateDatabase();
-        UnityEngine.Debug.Log("Corner Hit - Trigger");
     }
 }
