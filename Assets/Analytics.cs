@@ -38,7 +38,7 @@ public class Analytics : MonoBehaviour
             for (int column = 0; column < 4; column++)
             {
                 // Assign a value based on row and column indices
-                playerData.cornersVisited.Add(row.ToString() + "-" + column.ToString(), 0);
+                playerData.cornersVisited[row.ToString() + "-" + column.ToString()] = 0;
 
                 string json = JsonUtility.ToJson(playerData);
             }
