@@ -279,6 +279,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
       propertyPath: m_RootOrder
@@ -4164,6 +4169,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
       propertyPath: m_RootOrder
@@ -4468,6 +4478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block_Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
@@ -7046,6 +7061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
       propertyPath: m_RootOrder
@@ -7994,6 +8014,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
       propertyPath: m_RootOrder
@@ -8915,6 +8940,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block_Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
@@ -10892,6 +10922,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
       propertyPath: m_RootOrder
@@ -10960,6 +10995,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block_Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413925198344209715, guid: 3546443893f9de54fab67881443eaf3a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8442930035654114120, guid: 3546443893f9de54fab67881443eaf3a,
         type: 3}
@@ -11035,6 +11075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block_VerticalMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300829059920514749, guid: 455dc0aca7fc6174d93740be1f2c416a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8342254789784842438, guid: 455dc0aca7fc6174d93740be1f2c416a,
         type: 3}
@@ -11631,6 +11676,11 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 330585549}
+    - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
+        type: 3}
+      propertyPath: UIDocument_pause
+      value: 
+      objectReference: {fileID: 1471307037}
     - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: flashLightDrainSpeed

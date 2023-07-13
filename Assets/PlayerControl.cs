@@ -122,7 +122,7 @@ public class PlayerControl : MonoBehaviour
         {
             // Display the victory screen
             // victoryScreen.SetActive(true);
-            Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
             popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
             popupCanvas.enabled = true;
             UIDocument_pause.SetActive(false);
