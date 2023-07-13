@@ -1,32 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FlashlightControl : MonoBehaviour
 {
     private GameObject flashLight;
     private GameObject cheatLight;
     private GameObject pointLight;
-    [SerializeField] public float flashLightDrainSpeed = 0.005f;
-    public float flashLightOffThreshold = 500.0f;
+    private Label myLabel;
+    [SerializeField] 
+    public GameObject UIDocument_pause;
+    public float flashLightDrainSpeed = 0.0006f;
+    public float flashLightOffThreshold = 800.0f;
     private float flashLightIntensityFull;
     private float pointLightIntensityFull;
+
     // Start is called before the first frame update
     void Start()
     {
+
         flashLight = GameObject.Find("/Player/Flashlight");
         pointLight = GameObject.Find("/Player/Flashlight/PointLight");
         cheatLight = GameObject.Find("/Player/CheatLight");
 
         flashLightIntensityFull = flashLight.GetComponent<Light>().intensity;
         pointLightIntensityFull = pointLight.GetComponent<Light>().intensity;
-        Debug.Log(flashLightIntensityFull);
-        Debug.Log(pointLightIntensityFull);
 
         // flashlight is on by default
         flashLight.SetActive(true);
         // cheat light is off by default
         cheatLight.SetActive(false);
+
+        // Debug.Log("FlashlightControl.Start() "+myLabel.text);
     }
 
     // Update is called once per frame
@@ -56,6 +62,8 @@ public class FlashlightControl : MonoBehaviour
 
     void DrainFlashlightBattery()
     {
+
+        // Debug.Log("DrainFlashlightBattery "+flashLight.GetComponent<Light>().intensity/flashLightIntensityFull);
         if (flashLight.GetComponent<Light>().intensity > flashLightOffThreshold)
         {
             flashLight.GetComponent<Light>().intensity -= flashLightDrainSpeed * flashLightIntensityFull;
@@ -66,11 +74,17 @@ public class FlashlightControl : MonoBehaviour
             flashLight.GetComponent<Light>().intensity = 0;
             pointLight.GetComponent<Light>().intensity = 0;
         }
+        // Debug.Log("DrainFlashlightBattery "+myLabel.text);
     }
 
-    public  void RefillFlashlightBattery()
+    public void RefillFlashlightBattery()
     {
         flashLight.GetComponent<Light>().intensity = flashLightIntensityFull;
         pointLight.GetComponent<Light>().intensity = pointLightIntensityFull;
+    }
+
+    public int GetFlashlightBatteryLevel()
+    {
+        return (int)(flashLight.GetComponent<Light>().intensity/flashLightIntensityFull * 100.0f);
     }
 }

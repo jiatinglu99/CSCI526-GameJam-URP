@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Diagnostics;
 using System;
+using UnityEngine.UIElements;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     public PopupController popupController;
     public CameraController cameraController;
+    public GameObject UIDocument_pause;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,8 @@ public class PlayerControl : MonoBehaviour
 
         UnityEngine.Debug.Log("PlayerControl.Awake()");
         popupCanvas.enabled = true;
+        UIDocument_pause.SetActive(false);
+
         popupController.ShowPopup("You need to reach to the Green GOAL!");
 
         //wait for 3 seconds
@@ -53,6 +57,11 @@ public class PlayerControl : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         popupCanvas.enabled = false;
+        UIDocument_pause.SetActive(true);
+        // UIDocument uidoc = UIDocument_pause.GetComponent<UIDocument>();
+        // VisualElement root = uidoc.rootVisualElement;
+        // Label myLabel = root.Q<Label>("Battery");
+        // myLabel.text = "New Text";
     }
 
     void FixedUpdate()
@@ -92,6 +101,15 @@ public class PlayerControl : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         // lock y axis
         rb.MovePosition(new Vector3(rb.position.x, axisLockY, rb.position.z));
+        
+        if(UIDocument_pause.activeSelf)
+        {
+            UIDocument uidoc = UIDocument_pause.GetComponent<UIDocument>();
+            VisualElement root = uidoc.rootVisualElement;
+            Label myLabel = root.Q<Label>("Battery");
+            myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";    
+        }
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -104,9 +122,10 @@ public class PlayerControl : MonoBehaviour
         {
             // Display the victory screen
             // victoryScreen.SetActive(true);
-            Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
             popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
             popupCanvas.enabled = true;
+            UIDocument_pause.SetActive(false);
 
             // ensures that multiple collisions don't trigger the counter to increment more than once
             if (!completedLevel)
@@ -164,6 +183,7 @@ public class PlayerControl : MonoBehaviour
             // Display the victory screen
             popupController.ShowPopup("You Lose! Press Enter to retry the level.");
             popupCanvas.enabled = true;
+            UIDocument_pause.SetActive(false);
 
             // Disable the player movement
             // Assuming you have a script controlling the player's movement,

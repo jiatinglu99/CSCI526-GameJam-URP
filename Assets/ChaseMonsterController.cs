@@ -9,10 +9,25 @@ public class ChaseMonsterController : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public Transform playerTransform;
 
+    private bool startedChasing = false;
+
+    void Start()
+    {
+        StartCoroutine(StartChase());
+    }
+
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(playerTransform.position);
+        if (startedChasing)
+        {
+            agent.SetDestination(playerTransform.position);
+        }
     }
 
+    IEnumerator StartChase()
+    {
+        yield return new WaitForSeconds(5);
+        startedChasing = true;
+    }
 }
