@@ -16,6 +16,7 @@ public class PlayerData
     public int[] timesRetried = new int[30]; // ^^^
     // public int[,] cornersVisited = new int[8,4];
     public Dictionary<String, int> cornersVisited = new Dictionary<String, int>();
+    public String cornersData;
 }
 
 public class Analytics : MonoBehaviour
@@ -96,6 +97,7 @@ public class Analytics : MonoBehaviour
     public static void updateDatabase()
     {
         Debug.Log("Updating database");
+        playerData.cornersData = JsonConvert.SerializeObject(playerData.cornersVisited);
         string json = JsonConvert.SerializeObject(playerData);
         RestClient.Post("https://jomandterry-3569d-default-rtdb.firebaseio.com/.json", playerData);
         UnityEngine.Debug.Log(json);
