@@ -25,7 +25,7 @@ def retrieve_data():
 
 
 def read_json():
-	json_file = 'jomandterry-3569d-default-rtdb-export-2.json'
+	json_file = 'jomandterry-3569d-default-rtdb-export.json'
 
 	with open(json_file) as json_data:
 	    data = json.load(json_data)
@@ -50,18 +50,16 @@ def parse_data(data):
 
 		if values["highestCompletedLevel"] > clean_data[user_id]["highestCompletedLevel"]:
 			# clean_data[user_id]["highestCompletedLevel"]
-			clean_data[user_id]["highestCompletedLevel"] = min(values["highestCompletedLevel"],3) # 3 should be changed to the max number of levels
+			clean_data[user_id]["highestCompletedLevel"] = min(values["highestCompletedLevel"], 5) # 3 should be changed to the max number of levels
 
 	print(clean_data)
 
 	return clean_data
 
 
-
-
 def generate_graphs(data):
 
-	highest_completed_level = {0: 0, 1: 0, 2: 0, 3:0}
+	highest_completed_level = {0: 0, 1: 0, 2: 0, 3:0, 4:0}
 
 	# graph of the highest completed level
 	for key, values in data.items():
@@ -76,10 +74,11 @@ def generate_graphs(data):
 	plt.xlabel("Highest Completed Level")
 	plt.ylabel("Number of Players")
 	plt.title("The Number of Players Whose Highest Completed Level Was X")
-	plt.xticks([0, 1, 2, 3])
+	plt.xticks([0, 1, 2, 3, 4])
 	plt.show()
 
-
+# lots of work still needs to be done to be able to generate graphs from new analytics
+# and gotta parse that dictionary text string somehow (yuck!)
 if __name__ == '__main__':
 	# data = retrieveData()
 	raw_data = read_json()
