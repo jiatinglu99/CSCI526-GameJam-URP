@@ -46,5 +46,7 @@ public class PauseHandler : MonoBehaviour
         Debug.Log("quit game!");
         
         SceneManager.LoadScene("Start");
+        Time.timeScale = 1f;
+        Debug.Log("Time.timeScale: " + Time.timeScale);
     }
 }
