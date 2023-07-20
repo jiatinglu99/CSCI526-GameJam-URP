@@ -110,7 +110,9 @@ public class PlayerControl : MonoBehaviour
             UIDocument uidoc = UIDocument_pause.GetComponent<UIDocument>();
             VisualElement root = uidoc.rootVisualElement;
             Label myLabel = root.Q<Label>("Battery");
-            myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";    
+            myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";   
+            if(flashlightControl.GetFlashlightBatteryLevel()<=5)
+                UnityEngine.Debug.Log("Trigger Sanity");
         }
 
     }
