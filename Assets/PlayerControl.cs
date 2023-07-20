@@ -64,11 +64,10 @@ public class PlayerControl : MonoBehaviour
         // myLabel.text = "New Text";
     }
 
-    void FixedUpdate()
+    void Update()
     {
-
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical   = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical   = Input.GetAxisRaw("Vertical");
 
         Vector3 movement;
         if (moveHorizontal != 0)
@@ -101,6 +100,10 @@ public class PlayerControl : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         // lock y axis
         rb.MovePosition(new Vector3(rb.position.x, axisLockY, rb.position.z));
+    }
+
+    void FixedUpdate()
+    {
         
         if(UIDocument_pause.activeSelf)
         {
