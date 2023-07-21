@@ -11,6 +11,11 @@ public class PlayerControl : MonoBehaviour
     public float speed = 80.0f;
     public float turnSpeed = 20.0f;
     public float axisLockY = 27.5f;
+    
+    public bool isSanity = false;
+    public float health = 100.0f;
+    public float healthDrainer = 100;
+
     public Vector3 lastFlashlightLocation;
     private Rigidbody rb;
 
@@ -50,6 +55,7 @@ public class PlayerControl : MonoBehaviour
 
         // (re)start stopwatch for level
         stopWatch.Start();
+        
 
     }
 
@@ -110,9 +116,35 @@ public class PlayerControl : MonoBehaviour
             UIDocument uidoc = UIDocument_pause.GetComponent<UIDocument>();
             VisualElement root = uidoc.rootVisualElement;
             Label myLabel = root.Q<Label>("Battery");
-            myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";    
+            myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";
+
+            Label myLabel2 = root.Q<Label>("Health");
+            myLabel2.text = "Health "+(int)health+"%";   
+            if(flashlightControl.GetFlashlightBatteryLevel()<=5)
+            {
+                // isSanity = true;
+                DrainHealth();
+            }
+                
         }
 
+    }
+
+    void DrainHealth()
+    {
+        UnityEngine.Debug.Log("Trigger Sanity");
+        if(health>0)
+            health -= Time.deltaTime * healthDrainer;
+        else
+        {
+            popupController.ShowPopup("You Lose! Press Enter to retry the level.");
+            popupCanvas.enabled = true;
+            UIDocument_pause.SetActive(false);
+            StartCoroutine(LoadLevel());
+
+        }
+
+        UnityEngine.Debug.Log("Trigger Sanity: "+ health);
     }
 
     void OnCollisionEnter(Collision collision)

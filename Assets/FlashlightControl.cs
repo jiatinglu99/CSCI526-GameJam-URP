@@ -11,8 +11,8 @@ public class FlashlightControl : MonoBehaviour
     private Label myLabel;
     [SerializeField] 
     public GameObject UIDocument_pause;
-    public float flashLightDrainSpeed = 0.0006f;
-    public float flashLightOffThreshold = 800.0f;
+    public float flashLightDrainSpeed = 0.0006f; // 0.00065f;
+    public float flashLightOffThreshold = 800.0f; // 800.0f;
     private float flashLightIntensityFull;
     private float pointLightIntensityFull;
 
