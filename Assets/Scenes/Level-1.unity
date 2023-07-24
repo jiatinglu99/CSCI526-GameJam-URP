@@ -1366,6 +1366,7 @@ Transform:
   - {fileID: 1673982748}
   - {fileID: 1771818414}
   - {fileID: 1215120880}
+  - {fileID: 544754008}
   - {fileID: 684911943}
   - {fileID: 608701197}
   - {fileID: 880053204}
@@ -1375,10 +1376,9 @@ Transform:
   - {fileID: 894223134}
   - {fileID: 2068643570}
   - {fileID: 1871321934}
-  - {fileID: 544754008}
+  - {fileID: 518373293}
   - {fileID: 1599914511}
   - {fileID: 832056901}
-  - {fileID: 518373293}
   m_Father: {fileID: 313339617}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     public bool isSanity = false;
     public float health = 100.0f;
     public float healthDrainer = 100;
+    private bool alreadyWon = false;
 
     public Vector3 lastFlashlightLocation;
     private Rigidbody rb;
@@ -58,7 +59,7 @@ public class PlayerControl : MonoBehaviour
         // (re)start stopwatch for level
         stopWatch.Start();
         
-
+        alreadyWon = false;
     }
 
     IEnumerator DisablePopupAfterDelay()
@@ -165,8 +166,10 @@ public class PlayerControl : MonoBehaviour
         {
             // Display the victory screen
             // victoryScreen.SetActive(true);
-            Destroy(collision.gameObject);
-            popupController.ShowPopup("You Win! Press Enter to proceed to the next level...");
+            // Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<ShatterUponCollision>().Shatter();
+            alreadyWon = true;
+            popupController.ShowPopup("You Win!\nPress Enter to proceed to the next level...");
             popupCanvas.enabled = true;
             UIDocument_pause.SetActive(false);
 
@@ -221,7 +224,7 @@ public class PlayerControl : MonoBehaviour
             StartCoroutine(LoadLevel());
         }
 
-        if (collision.gameObject.CompareTag("Monster"))
+        if (collision.gameObject.CompareTag("Monster") && !alreadyWon)
         {
             // Display the victory screen
             popupController.ShowPopup("You Lose! Press Enter to retry the level.");
