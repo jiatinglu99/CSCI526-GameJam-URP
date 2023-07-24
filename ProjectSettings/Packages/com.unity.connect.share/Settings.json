@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/latio/Documents/GitHub/CSCI526-GameJam-URP/docs;/Users/devendrachaudhari/Desktop/Devendra/Study/GameDev/CSCI526-GameJam-URP/Demo;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/docs;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/Pages;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/Build;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/WebGL Builds;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/latio/Documents/GitHub/CSCI526-GameJam-URP/docs/Build;C:/Users/latio/Documents/GitHub/CSCI526-GameJam-URP/docs;/Users/devendrachaudhari/Desktop/Devendra/Study/GameDev/CSCI526-GameJam-URP/Demo;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/docs;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/Pages;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/Build;C:/Users/jiati/OneDrive/Desktop/Unity Tutorials/CSCI526-GameJam-URP/WebGL Builds;;;\"}"
             }
         ]
     }
