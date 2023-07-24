@@ -26,10 +26,10 @@ public class PlayerControl : MonoBehaviour
     private Stopwatch stopWatch = new Stopwatch();
 
 
-    public Canvas popupCanvas;
+    private Canvas popupCanvas;
     
     [SerializeField]
-    public PopupController popupController;
+    private PopupController popupController;
     public CameraController cameraController;
     public GameObject UIDocument_pause;
 
@@ -40,6 +40,8 @@ public class PlayerControl : MonoBehaviour
         flashlightControl = GetComponent<FlashlightControl>();
 
         UnityEngine.Debug.Log("PlayerControl.Awake()");
+        popupCanvas = GameObject.Find("CanvasPopup").GetComponent<Canvas>();
+        popupController = GameObject.Find("CanvasPopup").GetComponent<PopupController>();
         popupCanvas.enabled = true;
         UIDocument_pause.SetActive(false);
 
@@ -119,7 +121,7 @@ public class PlayerControl : MonoBehaviour
             myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";
 
             Label myLabel2 = root.Q<Label>("Health");
-            myLabel2.text = "Health "+(int)health+"%";   
+            myLabel2.text = "Sanity "+(int)health+"%";   
             if(flashlightControl.GetFlashlightBatteryLevel()<=5)
             {
                 // isSanity = true;
