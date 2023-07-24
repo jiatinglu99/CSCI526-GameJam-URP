@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class ButtonTrigger : MonoBehaviour
 {
-     protected int collidingObjects = 0;
-    public GameObject targetObject;
+    protected int collidingObjects = 0;
+    private List<GameObject> targetWallsList;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // find all walls with the same material as the button
+        targetWallsList = new List<GameObject>();
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall Collision");
+        foreach (GameObject wall in walls)
+        {
+            if (wall.GetComponent<Renderer>().material.ToString() == GetComponent<Renderer>().material.ToString())
+            {
+                targetWallsList.Add(wall);
+                UnityEngine.Debug.Log("Found wall with same material as button");
+            }
+        }
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
@@ -27,9 +31,20 @@ public class ButtonTrigger : MonoBehaviour
             collidingObjects++;
             if (collidingObjects == 1)
             {
-                targetObject.SetActive(!targetObject.activeSelf);
+                FlipTargetState();
             }
         }
+    }
+
+    public virtual void FlipTargetState()
+    {
+        // targetObject.SetActive(!targetObject.activeSelf);
+        // flip state for all tag "wall collision" objects with the same material as button
+        foreach (GameObject wall in targetWallsList)
+        {
+            wall.SetActive(!wall.activeSelf);
+        }
+        
     }
 
     public virtual void OnTriggerExit(Collider other)

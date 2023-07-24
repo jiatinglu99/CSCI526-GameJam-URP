@@ -7,6 +7,12 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
     private static Color defaultColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     private static Color blueColor = new Color(0.0f, 0.2f, 1.0f, 1.0f);
     private Color currentColor = defaultColor;
+
+    void Start()
+    {
+        // pass
+    }
+
     // OnTriggerEnter is called when the Collider other enters the trigger
     public override void OnTriggerEnter(Collider other)
     {
@@ -16,7 +22,7 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
             collidingObjects++;
             if (collidingObjects == 1 && currentColor == blueColor)
             {
-                targetObject.SetActive(!targetObject.activeSelf);
+                FlipTargetState();
             }
         }
         else if (other.gameObject.name == "Flashlight")
@@ -33,6 +39,7 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
             {
                 currentColor = defaultColor;
             }
+            // TODO: need to update targetWallsList upon color change
         }
     }
 }
