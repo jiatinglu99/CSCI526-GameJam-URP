@@ -7,7 +7,7 @@
             <ui:Button text="Resume" display-tooltip-when-elided="true" name="ButtonResume" class="button" style="margin-left: 3px; margin-right: 3px; margin-top: 3px; margin-bottom: 3px;" />
             <ui:Button text="Quit" display-tooltip-when-elided="true" name="ButtonQuit" class="button" style="margin-left: 3px; margin-right: 3px; margin-top: 3px; margin-bottom: 3px;" />
         </ui:VisualElement>
-        <ui:Label text="BatteryLife" display-tooltip-when-elided="true" name="Battery" style="background-color: rgba(0, 0, 0, 0); -unity-font-style: bold; font-size: 18%; color: rgb(255, 255, 255); justify-content: flex-end; padding-top: 0; bottom: auto; flex-grow: 1; -unity-text-align: lower-left;" />
-        <ui:Label text="Health" display-tooltip-when-elided="true" name="Health" style="background-color: rgba(0, 0, 0, 0); -unity-font-style: bold; font-size: 18%; color: rgb(255, 255, 255); justify-content: flex-end; padding-top: 0; bottom: auto; flex-grow: 1; -unity-text-align: lower-left;" />
+        <ui:Label text="BatteryLife" display-tooltip-when-elided="true" name="Battery" style="background-color: rgba(0, 0, 0, 0); -unity-font-style: bold; font-size: 18%; color: rgb(255, 255, 255); justify-content: flex-end; padding-top: 0; bottom: 5%; flex-grow: 1; -unity-text-align: lower-left; position: absolute; align-items: flex-start;" />
+        <ui:Label text="Sanity" display-tooltip-when-elided="true" name="Health" style="background-color: rgba(0, 0, 0, 0); -unity-font-style: bold; font-size: 18%; color: rgb(255, 255, 255); justify-content: flex-end; padding-top: 0; bottom: auto; flex-grow: 1; -unity-text-align: lower-left; align-items: flex-start;" />
     </ui:VisualElement>
 </ui:UXML>

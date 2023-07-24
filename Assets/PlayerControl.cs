@@ -26,10 +26,10 @@ public class PlayerControl : MonoBehaviour
     private Stopwatch stopWatch = new Stopwatch();
 
 
-    public Canvas popupCanvas;
+    private Canvas popupCanvas;
     
     [SerializeField]
-    public PopupController popupController;
+    private PopupController popupController;
     public CameraController cameraController;
     public GameObject UIDocument_pause;
 
@@ -40,6 +40,8 @@ public class PlayerControl : MonoBehaviour
         flashlightControl = GetComponent<FlashlightControl>();
 
         UnityEngine.Debug.Log("PlayerControl.Awake()");
+        popupCanvas = GameObject.Find("CanvasPopup").GetComponent<Canvas>();
+        popupController = GameObject.Find("CanvasPopup").GetComponent<PopupController>();
         popupCanvas.enabled = true;
         UIDocument_pause.SetActive(false);
 
@@ -119,11 +121,17 @@ public class PlayerControl : MonoBehaviour
             myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";
 
             Label myLabel2 = root.Q<Label>("Health");
-            myLabel2.text = "Health "+(int)health+"%";   
+            myLabel2.text = "Sanity "+(int)health+"%";   
             if(flashlightControl.GetFlashlightBatteryLevel()<=5)
             {
                 // isSanity = true;
                 DrainHealth();
+            }
+            else
+            {
+                health += Time.deltaTime * healthDrainer / 20;
+                // max health at 100
+                health = Math.Min(health, 100);
             }
                 
         }
@@ -134,7 +142,7 @@ public class PlayerControl : MonoBehaviour
     {
         UnityEngine.Debug.Log("Trigger Sanity");
         if(health>0)
-            health -= Time.deltaTime * healthDrainer;
+            health -= Time.deltaTime * healthDrainer/4;
         else
         {
             popupController.ShowPopup("You Lose! Press Enter to retry the level.");
