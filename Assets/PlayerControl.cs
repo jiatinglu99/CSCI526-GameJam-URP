@@ -26,6 +26,8 @@ public class PlayerControl : MonoBehaviour
     private int curLevel;
     private Stopwatch stopWatch = new Stopwatch();
 
+    public Light pointLight;
+
 
     private Canvas popupCanvas;
     
@@ -60,6 +62,9 @@ public class PlayerControl : MonoBehaviour
         stopWatch.Start();
         
         alreadyWon = false;
+
+        pointLight = GameObject.Find("/Player/PointLight").GetComponent<Light>();
+        pointLight.enabled = false;
     }
 
     IEnumerator DisablePopupAfterDelay()
@@ -126,6 +131,7 @@ public class PlayerControl : MonoBehaviour
             if(flashlightControl.GetFlashlightBatteryLevel()<=5)
             {
                 // isSanity = true;
+                pointLight.enabled = true;
                 DrainHealth();
             }
             else
@@ -261,6 +267,7 @@ public class PlayerControl : MonoBehaviour
             Destroy(collision.gameObject);
             // Refill flashlight battery
             flashlightControl.RefillFlashlightBattery();
+            pointLight.enabled = false;
         }
     }
 
