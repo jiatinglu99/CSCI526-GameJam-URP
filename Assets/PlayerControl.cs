@@ -50,6 +50,13 @@ public class PlayerControl : MonoBehaviour
 
         popupController.ShowPopup("You need to reach to the Green GOAL!");
 
+        // Disable the player movement at start
+        PlayerControl playerMovement = GetComponent<PlayerControl>();
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false;
+        }
+
         //wait for 3 seconds
         StartCoroutine(DisablePopupAfterDelay());
 
@@ -76,6 +83,13 @@ public class PlayerControl : MonoBehaviour
         // VisualElement root = uidoc.rootVisualElement;
         // Label myLabel = root.Q<Label>("Battery");
         // myLabel.text = "New Text";
+
+        // resume player movement
+        PlayerControl playerMovement = GetComponent<PlayerControl>();
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = true;
+        }
     }
 
     void Update()
@@ -152,10 +166,16 @@ public class PlayerControl : MonoBehaviour
             health -= Time.deltaTime * healthDrainer/4;
         else
         {
-            popupController.ShowPopup("You Lose! Press Enter to retry the level.");
+            popupController.ShowPopup("You Died! Press Enter to retry the level.");
             popupCanvas.enabled = true;
             UIDocument_pause.SetActive(false);
             StartCoroutine(LoadLevel());
+
+            PlayerControl playerMovement = GetComponent<PlayerControl>();
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = false;
+            }
 
         }
 
@@ -175,7 +195,7 @@ public class PlayerControl : MonoBehaviour
             // Destroy(collision.gameObject);
             collision.gameObject.GetComponent<ShatterUponCollision>().Shatter();
             alreadyWon = true;
-            popupController.ShowPopup("You Win!\nPress Enter to proceed to the next level...");
+            popupController.ShowPopup("You Escaped!\nPress Enter to proceed to the next level...");
             popupCanvas.enabled = true;
             UIDocument_pause.SetActive(false);
 
@@ -233,7 +253,7 @@ public class PlayerControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster") && !alreadyWon)
         {
             // Display the victory screen
-            popupController.ShowPopup("You Lose! Press Enter to retry the level.");
+            popupController.ShowPopup("You Died! Press Enter to retry the level.");
             popupCanvas.enabled = true;
             UIDocument_pause.SetActive(false);
 

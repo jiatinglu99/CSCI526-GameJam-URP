@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9173685795168290819}
   - component: {fileID: 1673204676716972277}
   - component: {fileID: 5923903553760309649}
+  - component: {fileID: 5167328461480760134}
   m_Layer: 0
   m_Name: Block_VerticalMove
   m_TagString: Wall Collision
@@ -114,3 +115,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!54 &5167328461480760134
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300829059920514749}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1

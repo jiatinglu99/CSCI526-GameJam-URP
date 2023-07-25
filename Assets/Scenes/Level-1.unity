@@ -33151,11 +33151,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444348894552828247, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
-      propertyPath: popupController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348894552828247, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
       propertyPath: UIDocument_pause
       value: 
       objectReference: {fileID: 620043663}
@@ -33174,11 +33169,6 @@ PrefabInstance:
       propertyPath: UIDocument_pause
       value: 
       objectReference: {fileID: 620043663}
-    - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: flashLightDrainSpeed
-      value: 0.001
-      objectReference: {fileID: 0}
     - target: {fileID: 4444348894589678590, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: m_IsActive
@@ -33222,46 +33212,6 @@ PrefabInstance:
     - target: {fileID: 4444348895543371770, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_Range
-      value: 121.013855
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_SpotAngle
-      value: 66.0571
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_InnerSpotAngle
-      value: 30.131332
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_Shadows.m_Bias
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_BounceIntensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444348895543371772, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-        type: 3}
-      propertyPath: m_Shadows.m_NearPlane
       value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

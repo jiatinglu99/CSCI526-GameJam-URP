@@ -13,6 +13,8 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
     public Material glowingBlueMaterial;
     public Material glowingRedMaterial;
 
+    private bool isSet = false;
+
     // dictionary of colors to materials
     private Dictionary<string, Material> colorToMaterial = new Dictionary<string, Material>();
 
@@ -39,14 +41,17 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
         // check if the object is the player
         if (other.gameObject.name == "Player")
         {
-            collidingObjects++;
-            if (collidingObjects == 1 && currentColor != whiteLight)
+            if (currentColor != whiteLight)
             {
                 FlipTargetState();
             }
         }
         else if (other.gameObject.name == "Flashlight")
         {
+            if (isSet)
+            {
+                return;
+            }
             // set material to the same color represented by the light
             // mat.SetColor("_EmissionColor", other.gameObject.GetComponent<Light>().color);
 
@@ -55,6 +60,7 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
                 UnityEngine.Debug.Log("Blue light detected");
                 currentColor = blueLight;
                 GetComponent<Renderer>().material = colorToMaterial[currentColor.ToString()];
+                isSet = true;
             }
             else if (other.gameObject.GetComponent<Light>().color == whiteLight)
             {
@@ -67,6 +73,7 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
                 UnityEngine.Debug.Log("Red light detected");
                 currentColor = redLight;
                 GetComponent<Renderer>().material = colorToMaterial[currentColor.ToString()];
+                isSet = true;
             }
             else
             {
