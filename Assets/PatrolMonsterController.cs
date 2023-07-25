@@ -59,7 +59,7 @@ public class PatrolMonsterController : MonoBehaviour
             else if (other.gameObject.GetComponent<Light>().color == blueLight)
             {
                 state = State.FREEZE;
-                effectTimer = 3f;
+                effectTimer = 1f;
             }
         }
     }

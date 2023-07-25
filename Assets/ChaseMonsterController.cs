@@ -16,14 +16,14 @@ public class ChaseMonsterController : MonoBehaviour
     private State state;
     private float effectTimer = 0f;
 
-        private static Color whiteLight = new Color32(255, 255, 255, 255);
+    private static Color whiteLight = new Color32(255, 255, 255, 255);
     private static Color blueLight = new Color32(0, 100, 255, 255);
     private static Color redLight = new Color32(255, 30, 0, 255);
 
     void Start()
     {
         state = State.FREEZE;
-        StartCoroutine(StartChase());
+        effectTimer = 5f;
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class ChaseMonsterController : MonoBehaviour
             if (other.gameObject.GetComponent<Light>().color == blueLight)
             {
                 state = State.FREEZE;
-                effectTimer = 3f;
+                effectTimer = 1f;
             }
         }
     }
@@ -60,11 +60,5 @@ public class ChaseMonsterController : MonoBehaviour
             return;
         }
         agent.SetDestination(transform.position);
-    }
-
-    IEnumerator StartChase()
-    {
-        yield return new WaitForSeconds(5);
-        state = State.CHASE;
     }
 }
