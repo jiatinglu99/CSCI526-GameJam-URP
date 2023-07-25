@@ -7,7 +7,7 @@ public class FlashlightFilterChange : MonoBehaviour
     private GameObject flashLight;
     private static Color whiteLight = new Color32(255, 255, 255, 255);
     private static Color blueLight = new Color32(0, 100, 255, 255);
-    private static Color redLight = new Color32(255, 0, 0, 255);
+    private static Color redLight = new Color32(255, 30, 0, 255);
 
     public Material glowingWhiteMaterial;
     public Material glowingBlueMaterial;
