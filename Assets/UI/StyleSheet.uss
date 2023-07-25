@@ -1,6 +1,6 @@
 .button {
-    width: 180px;
-    height: 100px;
+    width: 60%;
+    height: 14%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;

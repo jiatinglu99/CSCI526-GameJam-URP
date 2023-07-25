@@ -64,6 +64,8 @@ public class PlayerControl : MonoBehaviour
         lastFlashlightLocation = transform.position;
         cameraController.ZoomOutCamera();
         curLevel = SceneManager.GetActiveScene().buildIndex;
+        // Set up prefs
+        PlayerPrefs.SetInt("LatestLevel", Math.Max(1, curLevel));
 
         // (re)start stopwatch for level
         stopWatch.Start();

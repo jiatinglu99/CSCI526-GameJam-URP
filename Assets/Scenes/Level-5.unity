@@ -26362,28 +26362,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943752911}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1943854494 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4444348894552828241, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 4444348894181825921}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1943854504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943854494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7566ba7b9a200d48bc22d46fd94b718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereSize: 4
-  spheresInRow: 3
-  spheresInHeight: 3
-  sphereMaterial: {fileID: 2100000, guid: 44fffe8b9e43c1a4cb4336db9d0d8aac, type: 2}
 --- !u!1001 &1949263054
 PrefabInstance:
   m_ObjectHideFlags: 0

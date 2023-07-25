@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/StyleSheet.uss?fileID=7433441132597879392&amp;guid=eb74867467793824fa2d5cedda1015c8&amp;type=3#StyleSheet" />
     <ui:VisualElement style="flex-grow: 1; justify-content: flex-end; align-items: flex-end;">
-        <ui:VisualElement name="Container" style="flex-basis: 100%; flex-grow: 0; flex-shrink: 1; width: 40%; align-items: center; justify-content: flex-start; padding-left: 10%; padding-right: 10%; padding-top: 15%; padding-bottom: 10%;">
-            <ui:Button text="START" display-tooltip-when-elided="true" name="ButtonStart" class="button" style="height: 75px; width: 160px;" />
-            <ui:Button text="LEVELS" display-tooltip-when-elided="true" name="ButtonLevels" class="button" style="height: 75px; width: 160px;" />
-            <ui:Button text="ABOUT" display-tooltip-when-elided="true" name="ButtonAbout" class="button" style="height: 75px; width: 160px;" />
+        <ui:VisualElement name="Container" style="flex-basis: 100%; flex-grow: 0; flex-shrink: 1; width: 40%; align-items: center; justify-content: flex-start; padding-left: 10%; padding-right: 10%; padding-top: 20%; padding-bottom: 10%;">
+            <ui:Label text="LEVEL-1" display-tooltip-when-elided="true" name="LevelLabel" style="width: 50%; height: 10%; font-size: 60%; -unity-text-align: upper-center; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&apos;); -unity-font-style: bold; margin-bottom: 4%; color: rgb(255, 255, 255);" />
+            <ui:Button text="START" display-tooltip-when-elided="true" name="ButtonStart" class="button" style="height: 14%; width: 60%;" />
+            <ui:Button text="RESET" display-tooltip-when-elided="true" name="ButtonReset" class="button" style="height: 14%; width: 60%;" />
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:Label text="I&apos;M TERRYFIED!" display-tooltip-when-elided="true" name="Title" class="title" style="-unity-text-align: middle-center; top: 10%; left: 50%; color: rgb(255, 255, 255); -unity-font-style: bold; bottom: 80%; right: 50%; position: absolute;" />

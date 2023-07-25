@@ -216,6 +216,8 @@ GameObject:
   - component: {fileID: 4444348894181825923}
   - component: {fileID: 8508926740374082896}
   - component: {fileID: 7808425359835659668}
+  - component: {fileID: 4732307650294102198}
+  - component: {fileID: 3584888616286186009}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -409,6 +411,34 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4278198015
   pulseInterval: 0.5
+--- !u!114 &4732307650294102198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444348894552828241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7566ba7b9a200d48bc22d46fd94b718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphereSize: 4
+  spheresInRow: 3
+  spheresInHeight: 3
+  sphereMaterial: {fileID: 2100000, guid: 44fffe8b9e43c1a4cb4336db9d0d8aac, type: 2}
+--- !u!114 &3584888616286186009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444348894552828241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a051cb38ba6de488d2f02ef8914e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4444348894589678590
 GameObject:
   m_ObjectHideFlags: 0
