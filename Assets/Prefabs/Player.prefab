@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIDocument_pause: {fileID: 0}
-  flashLightDrainSpeed: 0.001
+  flashLightDrainSpeed: 0.0008
   flashLightOffThreshold: 800
 --- !u!114 &4444348894181825923
 MonoBehaviour:

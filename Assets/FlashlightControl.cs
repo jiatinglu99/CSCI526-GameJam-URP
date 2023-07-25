@@ -85,6 +85,6 @@ public class FlashlightControl : MonoBehaviour
 
     public int GetFlashlightBatteryLevel()
     {
-        return (int)(flashLight.GetComponent<Light>().intensity/flashLightIntensityFull * 100.0f);
+        return (int)((flashLight.GetComponent<Light>().intensity - flashLightOffThreshold)/(flashLightIntensityFull - flashLightOffThreshold) * 100.0f);
     }
 }

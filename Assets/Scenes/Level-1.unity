@@ -33169,6 +33169,11 @@ PrefabInstance:
       propertyPath: UIDocument_pause
       value: 
       objectReference: {fileID: 620043663}
+    - target: {fileID: 4444348894552828249, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
+        type: 3}
+      propertyPath: flashLightDrainSpeed
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 4444348894589678590, guid: ee18354b7acf85b4aba02bfc8f5c99ca,
         type: 3}
       propertyPath: m_IsActive

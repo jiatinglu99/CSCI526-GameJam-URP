@@ -36,7 +36,7 @@ public class FlashlightFilterChange : MonoBehaviour
     public void ChangeLightFilter(Material filterMaterial)
     {
         UnityEngine.Debug.Log("Changing flashlight color to " + materialToColor[filterMaterial.name]);
-        // TODO: Set flashlight to color according to dictionary
+        // Set flashlight to color according to dictionary
         flashLight.GetComponent<Light>().color = materialToColor[filterMaterial.name];
         // change the child of the flashlight to the same color
         flashLight.transform.GetChild(0).GetComponent<Light>().color = materialToColor[filterMaterial.name];

@@ -49,7 +49,7 @@ public class ShatterUponCollision : MonoBehaviour
             }
         }
 
-        // recreate the point light under goal
+        // recreate the first child object
         Object.Instantiate(transform.Find("Point Light").gameObject);
     }
     void createPiece(int x, int y, int z)

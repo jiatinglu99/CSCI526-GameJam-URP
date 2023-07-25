@@ -234,6 +234,10 @@ public class PlayerControl : MonoBehaviour
             if (curLevel >= SceneManager.sceneCountInBuildSettings)
             {
                 curLevel = 0;
+                // Display the victory screen
+                popupController.ShowPopup("Congratulations! You Just Beat The Game!\nPress Enter to go back to Main Menu.");
+                popupCanvas.enabled = true;
+                UIDocument_pause.SetActive(false);
             }
 // =======
 //             string currentSceneName = SceneManager.GetActiveScene().name;

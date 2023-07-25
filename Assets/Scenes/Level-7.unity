@@ -23535,9 +23535,9 @@ PrefabInstance:
     - target: {fileID: 7701242359734424995, guid: fff87e9b3b9fe61409b2c22450031011,
         type: 3}
       propertyPath: m_text
-      value: 'You can only change
+      value: 'You can only paint
 
-        button''s color once.'
+        the Button once.'
       objectReference: {fileID: 0}
     - target: {fileID: 7701242359734425005, guid: fff87e9b3b9fe61409b2c22450031011,
         type: 3}
