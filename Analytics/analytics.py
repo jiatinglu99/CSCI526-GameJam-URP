@@ -1,25 +1,27 @@
 import matplotlib.pyplot as plt
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
+# import firebase_admin
+#from firebase_admin import credentials
+# from firebase_admin import db
 import math
 
 import json
 import ast
+
+import numpy as np
 
 
 def retrieve_data():
 	#https://jomandterry-3569d-default-rtdb.firebaseio.com/.json
 
 	# Fetch the service account key JSON file contents
-	cred = credentials.Certificate('cs526-48acc-firebase-adminsdk-t9ums-64bc818726.json')
+	# cred = credentials.Certificate('cs526-48acc-firebase-adminsdk-t9ums-64bc818726.json')
 	# Initialize the app with a service account, granting admin privileges
-	firebase_admin.initialize_app(cred, {
-	    'databaseURL': "https://jomandterry-3569d-default-rtdb.firebaseio.com/"
-	})
+	# firebase_admin.initialize_app(cred, {
+	#    'databaseURL': "https://jomandterry-3569d-default-rtdb.firebaseio.com/"
+	# })
 
-	ref = db.reference('')
-	print(ref.get())
+	#ref = db.reference('')
+	# print(ref.get())
 
 	data = ""
 	return data
@@ -189,8 +191,31 @@ def generate_times_retried_graph(data):
 	return times_retried
 
 
-def generate_corners_graphs(data):
-	corners = []
+def generate_corners_graphs(data, level): # level to spawn
+	corners_visited = [0, 0, 0, 0]
+	# "3-0": 0, "3-1": 0, "3-2": 0, "3-3": 0
+
+	for key, values in data.items():
+		corners_visited[0] += values["cornersData"]["3-0"]
+		corners_visited[1] += values["cornersData"]["3-1"]
+		corners_visited[2] += values["cornersData"]["3-2"]
+		corners_visited[3] += values["cornersData"]["3-3"]
+
+	fig = plt.figure(figsize=(10, 5))
+	bar_container = plt.bar([1, 2, 3, 4], corners_visited[:])
+
+	plt.xlabel("Times Corners Visited")
+	plt.ylabel("Number of Players")
+	plt.title("Times Corners Visited")
+	x = np.array([1, 2, 3, 4])
+	x_ticks_labels = ['Lower right', 'Upper right', 'Lower left', 'Upper left']
+	plt.xticks(x, x_ticks_labels)
+
+	plt.bar_label(bar_container)
+	plt.show()
+
+	corners = [corners_visited[0], corners_visited[1], corners_visited[2] + corners_visited[3]]
+
 	return corners
 
 
@@ -228,8 +253,9 @@ if __name__ == '__main__':
 	highest_completed_level = generate_highest_comp_level_graph(clean_data)
 	avg_time = generate_time_spend_graph(clean_data)
 	times_retried = generate_times_retried_graph(clean_data)
-	corners = generate_corners_graphs(clean_data)
+	corners = generate_corners_graphs(clean_data, 3)
 	generate_avg_attempts_per_complete(highest_completed_level, times_retried)
+
 
 	# plt.show()
 
