@@ -139,13 +139,20 @@ public class PlayerControl : MonoBehaviour
             VisualElement root = uidoc.rootVisualElement;
             Label myLabel = root.Q<Label>("Battery");
             myLabel.text = "Flashlight "+flashlightControl.GetFlashlightBatteryLevel()+"%";
+            // lerp myLabel from light green to yellow
+            myLabel.style.color = Color.Lerp(new Color32(0, 255, 0, 255), new Color32(255, 255, 0, 255), (100f-flashlightControl.GetFlashlightBatteryLevel())/100f);
+            UnityEngine.Debug.Log("Color: " + myLabel.style.color);
 
             Label myLabel2 = root.Q<Label>("Health");
             myLabel2.text = "Sanity "+(int)health+"%";   
-            if(flashlightControl.GetFlashlightBatteryLevel()<=5)
+            // lerp myLabel2 from white to red
+            myLabel2.style.color = Color.Lerp(Color.white, Color.red, (100-health)/100);
+            if(flashlightControl.GetFlashlightBatteryLevel()<=0)
             {
                 // isSanity = true;
                 pointLight.enabled = true;
+                // set pulseWheenInsane
+                GetComponent<PulseWhenInsane>().SetInsane(true);
                 DrainHealth();
             }
             else
@@ -153,8 +160,9 @@ public class PlayerControl : MonoBehaviour
                 health += Time.deltaTime * healthDrainer / 20;
                 // max health at 100
                 health = Math.Min(health, 100);
+                GetComponent<PulseWhenInsane>().SetInsane(false);
             }
-                
+
         }
 
     }
@@ -163,9 +171,10 @@ public class PlayerControl : MonoBehaviour
     {
         UnityEngine.Debug.Log("Trigger Sanity");
         if(health>0)
-            health -= Time.deltaTime * healthDrainer/4;
+            health -= Time.deltaTime * healthDrainer/6;
         else
         {
+            GetComponent<ShatterOnDeathPlayer>().Shatter();
             popupController.ShowPopup("You Died! Press Enter to retry the level.");
             popupCanvas.enabled = true;
             UIDocument_pause.SetActive(false);
@@ -176,7 +185,8 @@ public class PlayerControl : MonoBehaviour
             {
                 playerMovement.enabled = false;
             }
-
+            
+            GetComponent<ShatterOnDeathPlayer>().Shatter();
         }
 
         UnityEngine.Debug.Log("Trigger Sanity: "+ health);
@@ -256,6 +266,7 @@ public class PlayerControl : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Monster") && !alreadyWon)
         {
+            GetComponent<ShatterOnDeathPlayer>().Shatter();
             // Display the victory screen
             popupController.ShowPopup("You Died! Press Enter to retry the level.");
             popupCanvas.enabled = true;

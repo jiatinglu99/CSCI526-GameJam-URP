@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 public class FlashlightControl : MonoBehaviour
 {
@@ -85,6 +86,6 @@ public class FlashlightControl : MonoBehaviour
 
     public int GetFlashlightBatteryLevel()
     {
-        return (int)((flashLight.GetComponent<Light>().intensity - flashLightOffThreshold)/(flashLightIntensityFull - flashLightOffThreshold) * 100.0f);
+        return (int)(Math.Max(0f, (flashLight.GetComponent<Light>().intensity - flashLightOffThreshold)/(flashLightIntensityFull - flashLightOffThreshold) * 100.0f));
     }
 }
