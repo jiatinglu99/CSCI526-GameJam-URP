@@ -4,13 +4,33 @@ using UnityEngine;
 
 public class ButtonTriggerWithVariableColor : ButtonTrigger
 {
-    private static Color defaultColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-    private static Color blueColor = new Color(0.0f, 0.2f, 1.0f, 1.0f);
-    private Color currentColor = defaultColor;
+    private static Color whiteLight = new Color32(255, 255, 255, 255);
+    private static Color blueLight = new Color32(0, 100, 255, 255);
+    private static Color redLight = new Color32(255, 0, 0, 255);
+    private Color currentColor = whiteLight;
+
+    public Material glowingWhiteMaterial;
+    public Material glowingBlueMaterial;
+    public Material glowingRedMaterial;
+
+    // dictionary of colors to materials
+    private Dictionary<string, Material> colorToMaterial = new Dictionary<string, Material>();
 
     void Start()
     {
-        // pass
+        // load all color & material pairs into dictionary
+        colorToMaterial.Add(whiteLight.ToString(), glowingWhiteMaterial);
+        colorToMaterial.Add(blueLight.ToString(), glowingBlueMaterial);
+        colorToMaterial.Add(redLight.ToString(), glowingRedMaterial);
+
+        // set to default color
+        currentColor = whiteLight;
+        // set material to default color
+        GetComponent<Renderer>().material = colorToMaterial[currentColor.ToString()];
+        UnityEngine.Debug.Log("Button color set to " + currentColor);
+        UnityEngine.Debug.Log("Button material set to " + GetComponent<Renderer>().material);
+        UnityEngine.Debug.Log("Button material set to " + GetComponent<Renderer>().material.ToString());
+        UnityEngine.Debug.Log("Dict material is " + colorToMaterial[currentColor.ToString()].ToString());
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
@@ -20,26 +40,56 @@ public class ButtonTriggerWithVariableColor : ButtonTrigger
         if (other.gameObject.name == "Player")
         {
             collidingObjects++;
-            if (collidingObjects == 1 && currentColor == blueColor)
+            if (collidingObjects == 1 && currentColor != whiteLight)
             {
                 FlipTargetState();
             }
         }
         else if (other.gameObject.name == "Flashlight")
         {
-            // Change color to flashlight color
-            Material mat = GetComponent<Renderer>().material;
-            mat.SetColor("_EmissionColor", other.gameObject.GetComponent<Light>().color);
+            // set material to the same color represented by the light
+            // mat.SetColor("_EmissionColor", other.gameObject.GetComponent<Light>().color);
 
-            if (other.gameObject.GetComponent<Light>().color == blueColor)
+            if (other.gameObject.GetComponent<Light>().color == blueLight)
             {
-                currentColor = blueColor;
+                UnityEngine.Debug.Log("Blue light detected");
+                currentColor = blueLight;
+                GetComponent<Renderer>().material = colorToMaterial[currentColor.ToString()];
+            }
+            else if (other.gameObject.GetComponent<Light>().color == whiteLight)
+            {
+                UnityEngine.Debug.Log("White light detected");
+                currentColor = whiteLight;
+                GetComponent<Renderer>().material = colorToMaterial[currentColor.ToString()];
+            }
+            else if (other.gameObject.GetComponent<Light>().color == redLight)
+            {
+                UnityEngine.Debug.Log("Red light detected");
+                currentColor = redLight;
+                GetComponent<Renderer>().material = colorToMaterial[currentColor.ToString()];
             }
             else
             {
-                currentColor = defaultColor;
+                UnityEngine.Debug.Log("Unknown light detected");
+                UnityEngine.Debug.Log(other.gameObject.GetComponent<Light>().color);
+                UnityEngine.Debug.Log(blueLight);
             }
-            // TODO: need to update targetWallsList upon color change
+            // update targetWallsList upon color change
+            UpdateWallList();
+        }
+    }
+
+    private void UpdateWallList()
+    {
+        targetWallsList.Clear();
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall Collision");
+        foreach (GameObject wall in walls)
+        {
+            if (wall.GetComponent<Renderer>().material.ToString() == GetComponent<Renderer>().material.ToString())
+            {
+                targetWallsList.Add(wall);
+                UnityEngine.Debug.Log("Found wall with same material as button");
+            }
         }
     }
 }

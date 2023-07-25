@@ -5,12 +5,12 @@ using UnityEngine;
 public class ButtonTrigger : MonoBehaviour
 {
     protected int collidingObjects = 0;
-    private List<GameObject> targetWallsList;
+    protected List<GameObject> targetWallsList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         // find all walls with the same material as the button
-        targetWallsList = new List<GameObject>();
+        targetWallsList.Clear();
         GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall Collision");
         foreach (GameObject wall in walls)
         {
